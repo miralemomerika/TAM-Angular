@@ -1,0 +1,88 @@
+<app-navbar></app-navbar>
+
+<div class="container py-5">
+    <div class="container py-5">
+        <div class="app-body">
+            <main class="main d-flex align-items-center">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6 mx-auto">
+                            <div class="card mx-4">
+                                <div class="card-body p-4">
+                                    <form [formGroup]="registerForm" autocomplete="off" novalidate
+                                        (ngSubmit)="registerUser(registerForm.value)">
+                                        <h1>Registruj se</h1>
+                                        <p class="text-muted">Kreirajte korisnički račun</p>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="icon-user"></i></span>
+                                            </div>
+                                            <input type="text" class="form-control" placeholder="Ime"
+                                                id="firstName" formControlName="firstName" required>
+                                        </div>
+                                        <p>
+                                            <em
+                                                *ngIf="validateControl('firstName') && hasError('firstName', 'required')">Firstname
+                                                is required!</em>
+                                        </p>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="icon-user"></i></span>
+                                            </div>
+                                            <input type="text" class="form-control" placeholder="Prezime"
+                                                id="lastName" formControlName="lastName" required>
+                                        </div>
+                                        <p>
+                                            <em *ngIf="validateControl('lastName') && hasError('lastName', 'required')">Lastname
+                                                is required!</em>
+                                        </p>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">@</span>
+                                            </div>
+                                            <input type="text" class="form-control" placeholder="Email"
+                                                id="email" formControlName="email" required>
+                                        </div>
+                                        <p>
+                                            <em *ngIf="validateControl('email') && hasError('email', 'email')">Please
+                                                provide a valid email.</em>
+                                            <em *ngIf="validateControl('email') && hasError('email', 'required')">Email
+                                                is required!</em>
+                                        </p>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="icon-user"></i></span>
+                                            </div>
+                                            <input type="number" class="form-control" placeholder="Broj Telefona"
+                                                id="phoneNumber" formControlName="phoneNumber" required>
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="icon-lock"></i></span>
+                                            </div>
+                                            <input type="password" class="form-control" placeholder="Lozinka"
+                                                id="password" formControlName="password" required>
+                                        </div>
+                                        <p>
+                                            <em *ngIf="validateControl('password') && hasError('password', 'required')">Password
+                                                is required!</em>
+                                        </p>
+                                        <div class="input-group mb-4">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="icon-lock"></i></span>
+                                            </div>
+                                            <input type="password" class="form-control" placeholder="Ponovite lozinku"
+                                                id="confirm" formControlName="confirm" required>
+                                        </div>
+                                        <button type="submit" class="btn btn-block btn-success"
+                                            [disabled]="!registerForm.valid">Kreiraj račun</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+</div>
