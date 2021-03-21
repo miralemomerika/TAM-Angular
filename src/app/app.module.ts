@@ -1,7 +1,7 @@
+import { SharedModule } from './shared/shared.module';
 import { NgModule } from '@angular/core';
 import { ModalModule } from 'ngx-bootstrap/modal';
-import { HomeModule } from './home/home.module';
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
@@ -12,7 +12,8 @@ import { AppComponent } from './app.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    routingComponents
   ],
   imports: [
     BrowserModule,
@@ -20,8 +21,8 @@ import { AppComponent } from './app.component';
     AppRoutingModule,
     RouterModule,
     ModalModule,
-    HomeModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

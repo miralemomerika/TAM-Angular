@@ -14,6 +14,8 @@ export class NavbarComponent implements OnInit {
 
   private _isCollapsed: boolean = true;
   collapseRef: any;
+  router: any;
+  route: any;
 
 
   set isCollapsed(value) {
