@@ -5,9 +5,9 @@ import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { RouterModule } from '@angular/router';
 
-import { PrivacyComponent } from '../home/pages/privacy/privacy.component';
-import { RegistrationComponent } from '../home/pages/registration/registration.component';
-import { LoginComponent } from '../home/pages/login/login.component';
+import { PrivacyComponent } from '../components/privacy/privacy.component';
+import { RegistrationComponent } from '../components/registration/registration.component';
+import { LoginComponent } from '../components/login/login.component';
 
 
 @NgModule({
