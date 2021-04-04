@@ -1,6 +1,8 @@
 import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { CollapseDirective } from 'ngx-bootstrap/collapse';
 import { ModalDirective } from 'ngx-bootstrap/modal';
+import { reduce } from 'rxjs/operators';
+import { AuthenticationService } from '../../core/services/authentication.service';
 
 @Component({
   selector: 'app-navbar',
@@ -12,6 +14,7 @@ export class NavbarComponent implements OnInit {
   @ViewChild('registracijaModal') public registracijaModal?: ModalDirective;
   @ViewChild('prijavaModal') public prijavaModal?: ModalDirective;
 
+  public isUserAuthenticated: boolean = false;
   private _isCollapsed: boolean = true;
   collapseRef: any;
   router: any;
@@ -34,9 +37,18 @@ export class NavbarComponent implements OnInit {
   @ViewChild(CollapseDirective, { read: ElementRef, static: false }) collapse !: CollapseDirective;
 
 
-  constructor(private renderer: Renderer2) { }
+  constructor(private renderer: Renderer2, private authService: AuthenticationService) { }
 
   ngOnInit(): void {
+    this.authService.authChanged
+    .subscribe((res: any) => {
+      this.isUserAuthenticated = res;
+    })
+  }
+
+  public Logout = () => {
+    this.authService.logout();
+    this.router.navigate(["/"]);
   }
 
   ngAfterViewChecked(): void{

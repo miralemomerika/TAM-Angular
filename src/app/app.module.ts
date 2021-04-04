@@ -4,17 +4,18 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-
 import { AppComponent } from './app.component';
+import { ErrorHandlerService } from './core/services/error-handler.service';
+import { JwtModule } from '@auth0/angular-jwt';
+
+export function TokenGetter() {
+  return localStorage.getItem('token');
+}
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    routingComponents
-  ],
+  declarations: [AppComponent, routingComponents],
   imports: [
     BrowserModule,
     HttpClientModule,
@@ -22,9 +23,22 @@ import { AppComponent } from './app.component';
     RouterModule,
     ModalModule,
     BrowserAnimationsModule,
-    SharedModule
+    SharedModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: TokenGetter,
+        allowedDomains: ["localhost:5001"],
+        disallowedRoutes: []
+      }
+    }),
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorHandlerService,
+      multi: true,
+    },
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

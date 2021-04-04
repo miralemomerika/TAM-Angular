@@ -6,8 +6,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { RouterModule } from '@angular/router';
 
 import { PrivacyComponent } from '../components/privacy/privacy.component';
-import { RegistrationComponent } from '../components/registration/registration.component';
-import { LoginComponent } from '../components/login/login.component';
+// import { RegistrationComponent } from '../components/registration/registration.component';
+// import { LoginComponent } from '../core/authentication/login-user/login.component';
 
 
 @NgModule({
@@ -20,8 +20,8 @@ import { LoginComponent } from '../components/login/login.component';
     CollapseModule,
     RouterModule.forChild([
       { path: 'privacy', component: PrivacyComponent },
-      { path: 'registration', component: RegistrationComponent },
-      { path: 'login', component: LoginComponent }
+      // { path: 'registration', component: RegistrationComponent },
+      // { path: 'login', component: LoginComponent }
     ])
   ],
   exports: [

@@ -1,15 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { UserRegistrationDto } from '../../../_interfaces/user-registration-dto';
 import { AuthenticationService } from '../../services/authentication.service';
-import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { FormControl, Validators, FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register-user',
   templateUrl: './register-user.component.html',
-  styleUrls: ['./register-user.component.css']
+  styleUrls: ['./register-user.component.css'],
 })
 export class RegisterUserComponent implements OnInit {
-  
+
+  public errorMessage: string = '';
+  public showError: boolean = false;
+
   registerForm = this.fb.group({
 
     firstName: new FormControl('', [Validators.required]),
@@ -21,30 +25,20 @@ export class RegisterUserComponent implements OnInit {
 
   });
 
-  constructor(private _authService: AuthenticationService, public fb: FormBuilder) {
+  constructor( private _authService: AuthenticationService, public fb: FormBuilder, private router: Router) { }
 
-    // this.registerForm = new FormGroup({
-    //   firstName: fb.control('', [Validators.required]),
-    //   lastName: fb.control('', [Validators.required]),
-    //   email: fb.control('', [Validators.required, Validators.email]),
-    //   phoneNumber: fb.control(''),
-    //   password: fb.control('', [Validators.required]),
-    //   confirm: fb.control(''),
-    // });
-
-   }
-
-  ngOnInit(): void { }
+  ngOnInit(): void {}
 
   public validateControl = (controlName: string) => {
     return this.registerForm.controls[controlName].invalid && this.registerForm.controls[controlName].touched
   }
 
   public hasError = (controlName: string, errorName: string) => {
-    return this.registerForm.controls[controlName].hasError(errorName)
+    return this.registerForm.controls[controlName].hasError(errorName);
   }
 
   public registerUser = (registerFormValue: any) => {
+    this.showError = false;
     const formValues = { ...registerFormValue };
 
     const user: UserRegistrationDto = {
@@ -56,14 +50,14 @@ export class RegisterUserComponent implements OnInit {
       confirmPassword: formValues.confirm,
     };
 
-    this._authService.registerUser("api/accounts/registration", user)
+    this._authService.registerUser('api/accounts/registration', user)
     .subscribe(_ => {
-      console.log("Successful registration!");
-    },
-    error => {
-      console.log(error.error.errors);
-    })
-
+        this.router.navigate(["/authentication/login"]);
+      },
+      error => {
+        this.errorMessage = error;
+        this.showError = true;
+      })
   }
 
 }
