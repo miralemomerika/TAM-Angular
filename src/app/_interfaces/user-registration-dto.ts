@@ -5,4 +5,5 @@ export interface UserRegistrationDto {
     phoneNumber: string,
     password: string,
     confirmPassword: string,
+    clientURI: string,
 }
