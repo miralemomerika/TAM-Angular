@@ -62,10 +62,10 @@ export class ErrorHandlerService implements HttpInterceptor {
 
   private handleUnauthorized = (error: HttpErrorResponse): string => {
     if(this.router.url === '/authentication/login') {
-      return 'Sorry we couldn\'t log you in. Try different email or password.';
+      return error.error.errorMessage;
     }
     else{
-      this.router.navigate(['/authentication/login']);
+      this.router.navigate(['/authentication/login'], { queryParams: { returnUrl: this.router.url }});
       return error.message;
     }
   }

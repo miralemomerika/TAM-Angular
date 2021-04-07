@@ -5,12 +5,14 @@ import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { SharedModule } from '../../shared/shared.module';
 import { LoginComponent } from './login-user/login.component';
+import { EmailConfirmationComponent } from './email-confirmation/email-confirmation.component';
 
 
 @NgModule({
   declarations: [
     RegisterUserComponent,
-    LoginComponent
+    LoginComponent,
+    EmailConfirmationComponent
   ],
   imports: [
     CommonModule,
@@ -19,6 +21,7 @@ import { LoginComponent } from './login-user/login.component';
     RouterModule.forChild([
     {path: 'register', component: RegisterUserComponent},
     {path: 'login', component: LoginComponent},
+    {path: 'emailconfirmation', component: EmailConfirmationComponent},
     ]),
     SharedModule
   ],
