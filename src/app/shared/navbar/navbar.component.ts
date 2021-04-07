@@ -19,6 +19,7 @@ export class NavbarComponent implements OnInit {
   collapseRef: any;
   router: any;
   route: any;
+  show: boolean = false;
 
 
   set isCollapsed(value) {
@@ -53,5 +54,10 @@ export class NavbarComponent implements OnInit {
 
   ngAfterViewChecked(): void{
     this.collapseRef = this.collapse;
+  }
+
+  ShowMobileMenu()
+  {
+    this.show = !this.show;
   }
 }
