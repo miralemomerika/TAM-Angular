@@ -12,4 +12,9 @@ export class CoursesComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  Prijava()
+  {
+    alert("Prijava");
+  }
+
 }
