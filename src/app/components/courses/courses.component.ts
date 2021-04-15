@@ -1,3 +1,4 @@
+import { PrijavaService } from './../../core/services/prijava.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,14 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CoursesComponent implements OnInit {
 
-  constructor() { }
+  constructor(private prijavaService: PrijavaService) { }
 
   ngOnInit(): void {
   }
 
-  Prijava()
+  Prijava(kursId: number)
   {
-    alert("Prijava");
+    this.prijavaService.addPrijava(kursId).subscribe(x => {
+      console.log(x);
+    });
   }
 
 }
