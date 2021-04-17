@@ -1,4 +1,5 @@
-import { PrijavaService } from './../../core/services/prijava.service';
+import { Kurs } from './../../core/models/Kurs';
+import { KursService } from './../../core/services/kurs.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,18 +7,18 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './courses.component.html',
   styleUrls: ['./courses.component.css']
 })
+
 export class CoursesComponent implements OnInit {
 
-  constructor(private prijavaService: PrijavaService) { }
+  public kursevi!: Kurs[];
+
+  constructor(private kursService: KursService) {
+    this.kursService.getKurseve().subscribe(x => {
+      this.kursevi = x;
+      console.log(this.kursevi);
+    });
+   }
 
   ngOnInit(): void {
   }
-
-  Prijava(kursId: number)
-  {
-    this.prijavaService.addPrijava(kursId).subscribe(x => {
-      console.log(x);
-    });
-  }
-
 }
