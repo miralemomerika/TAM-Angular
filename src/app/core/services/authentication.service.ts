@@ -3,7 +3,7 @@ import { UserRegistrationDto } from '../../_interfaces/user-registration-dto';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { EnvironmentUrlServiceService } from './environment-url-service.service';
 import { UserLogin } from 'src/app/_interfaces/user-login';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { CustomEncoder } from 'src/app/shared/custom-encoder';
 
@@ -47,13 +47,17 @@ export class AuthenticationService {
       return true;
   }
 
-  public confimEmail = (route: string, token: string, email: string) => {
+  public confirmEmail = (route: string, token: string, email: string) => {
 
     let params = new HttpParams({encoder: new CustomEncoder() })
     params = params.append('token', token);
     params = params.append('email', email);
 
     return this._http.get(this.createCompleteRoute(route, this._envUrl.urlAddress), { params: params });
+  }
+
+  public getData = (route: string): Observable<any> => {
+    return this._http.get(this.createCompleteRoute(route, this._envUrl.urlAddress));
   }
 
 }

@@ -25,7 +25,7 @@ export class EmailConfirmationComponent implements OnInit {
 
     console.log(token);
 
-    this.authService.confimEmail('api/accounts/emailconfirmation', token, email)
+    this.authService.confirmEmail('api/accounts/emailconfirmation', token, email)
     .subscribe(_ => {
       this.showSuccess = true;
     },

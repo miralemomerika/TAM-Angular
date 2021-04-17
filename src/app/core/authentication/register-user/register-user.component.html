@@ -52,10 +52,49 @@
                                         </p>
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend">
-                                                <span class="input-group-text"><i class="icon-user"></i></span>
+                                                <span class="input-group-text"><i class="icon-phone"></i></span>
                                             </div>
                                             <input type="number" class="form-control" placeholder="Broj Telefona"
                                                 id="phoneNumber" formControlName="phoneNumber" required>
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="icon-role"></i></span>
+                                            </div>
+                                            <select formControlName="role" class="form-control" required #role
+                                                (change)="onRoleSelect()">
+                                                <option value="undefined" disabled>
+                                                    Please select role..
+                                                </option>
+                                                <option *ngFor="let role of roles; let i = index" [value]="roles[i].id">
+                                                    {{ roles[i].name }}
+                                                </option>
+                                            </select>
+                                        </div>
+                                        <p>
+                                            <em *ngIf="validateControl('role') && hasError('role', 'required')">Role
+                                                is required!</em>
+                                        </p>
+                                        <div *ngIf="isOrganizator" class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="icon-building"></i></span>
+                                            </div>
+                                            <input type="text" class="form-control" placeholder="Institucija"
+                                                id="Institucija" formControlName="institution">
+                                        </div>
+                                        <div *ngIf="isPolaznik" class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="icon"></i></span>
+                                            </div>
+                                            <select formControlName="studentType" class="form-control">
+                                                <option value="undefined" disabled>
+                                                    Please select type..
+                                                </option>
+                                                <option *ngFor="let type of studentTypes; let i = index"
+                                                    [value]="studentTypes[i].id">
+                                                    {{ studentTypes[i].naziv }}
+                                                </option>
+                                            </select>
                                         </div>
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend">

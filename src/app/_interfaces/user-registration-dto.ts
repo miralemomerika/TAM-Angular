@@ -6,4 +6,7 @@ export interface UserRegistrationDto {
     password: string,
     confirmPassword: string,
     clientURI: string,
+    role: string,
+    institution?: string,
+    studentType?: string,
 }
