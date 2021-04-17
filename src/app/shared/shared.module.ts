@@ -1,3 +1,4 @@
+import { CourseItemComponent } from './../components/course-item/course-item.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
@@ -14,6 +15,7 @@ import { PrivacyComponent } from '../components/privacy/privacy.component';
   declarations: [
     NavbarComponent,
     FooterComponent,
+    CourseItemComponent
   ],
   imports: [
     CommonModule,
@@ -26,7 +28,8 @@ import { PrivacyComponent } from '../components/privacy/privacy.component';
   ],
   exports: [
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    CourseItemComponent
   ]
 })
 export class SharedModule { }
