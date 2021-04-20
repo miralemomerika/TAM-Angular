@@ -1,13 +1,11 @@
   <!-- ======= Courses Section ======= -->
 
-
-
   <div class="course-item">
             <img src="assets/img/course-1.jpg" class="img-fluid" alt="...">
             <div class="course-content">
               <div class="d-flex justify-content-between align-items-center mb-3">
-                <h4>{{ kurs.tip }}</h4>
-                <a routerLink="/course-details" class="course-btn">Info</a>
+                <h4>{{ kurs.kategorijaKursa.naziv }}</h4>
+                <button class="course-btn" (click)="Info()">Info</button>
                 <p class="price">{{ kurs.cijena }}KM</p>
               </div>
 
@@ -21,7 +19,7 @@
                 <div class="trainer-rank d-flex align-items-center">
                   <i class="bx bx-user"></i>&nbsp;44/50
                   &nbsp;&nbsp;
-                <a (click)="Prijava(2)" class="course-btn">Prijavi se</a>
+                <a (click)="Prijava(kurs.id)" class="course-btn">Prijavi se</a>
                 </div>
               </div>
             </div>

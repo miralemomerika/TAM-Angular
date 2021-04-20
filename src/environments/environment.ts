@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  //urlAddress: 'https://api.p2062.app.fit.ba/'
+  // urlAddress: 'https://api.p2062.app.fit.ba/'
   urlAddress: 'https://localhost:44331/'
 };
 
