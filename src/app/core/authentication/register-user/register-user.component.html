@@ -7,8 +7,7 @@
                         <div class="col-md-6 mx-auto">
                             <div class="card mx-4">
                                 <div class="card-body p-4">
-                                    <form [formGroup]="registerForm" autocomplete="off" novalidate
-                                        (ngSubmit)="registerUser(registerForm.value)">
+                                    <form [formGroup]="registerForm" autocomplete="off" novalidate (ngSubmit)="registerUser(registerForm.value)">
                                         <h1>Registruj se</h1>
                                         <div *ngIf="showError" class="alert alert-danger" role="alert">
                                             <span [innerHTML]="errorMessage"></span>

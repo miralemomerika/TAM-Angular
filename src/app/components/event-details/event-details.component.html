@@ -1,0 +1,19 @@
+<main id="main">    
+    <div class="breadcrumbs" data-aos="fade-in">
+      <div class="container">
+        <h2>Događaji</h2>
+        <p>Događaji koji su planirani uskoro.</p>
+      </div>
+    </div>    
+    <section id="events" class="events">
+      <div class="container" data-aos="fade-up">
+        <!-- <div class="row"> -->
+            <!-- <div class="d-flex justify-content-center"> -->
+                <app-event-item *ngFor="let dogadjajGet of dogadjaji"
+  [dogadjajGet]="dogadjajGet"></app-event-item>
+            <!-- </div> -->
+          
+        <!-- </div> -->
+      </div>
+    </section>
+  </main>

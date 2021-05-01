@@ -3,16 +3,16 @@ import { DogadjajiService } from './../../core/services/dogadjaji.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-events',
-  templateUrl: './events.component.html',
-  styleUrls: ['./events.component.css']
+  selector: 'app-event-details',
+  templateUrl: './event-details.component.html',
+  styleUrls: ['./event-details.component.css']
 })
-export class EventsComponent implements OnInit {
+export class EventDetailsComponent implements OnInit {
   public dogadjaji!: DogadjajGet[];
 
   constructor(private dogadjajiService: DogadjajiService) {
-    this.dogadjajiService.getDogadjajeOrganizator().subscribe(x => {
-      // this.dogadjaji = x;
+    this.dogadjajiService.getDogadjaje().subscribe(x => {
+      this.dogadjaji=x;
       // console.log(this.dogadjaji);
     });
    }
