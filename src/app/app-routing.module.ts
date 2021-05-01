@@ -11,6 +11,8 @@ import { LoginComponent } from './core/authentication/login-user/login.component
 import { HomeComponent } from './components/home/home.component';
 import { CourseDetailsComponent } from './components/course-details/course-details.component';
 import { Error404Component } from './components/error404/error404.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { EventDetailsComponent } from './components/event-details/event-details.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -23,6 +25,7 @@ const routes: Routes = [
   { path: 'trainers', component: TrainersComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'event-details', component: EventDetailsComponent},
   // { path: 'authentication/register', component: RegisterUserComponent },
   {
     path: '404',
@@ -33,7 +36,10 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes)
+  ,
+  FormsModule,
+ReactiveFormsModule],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
@@ -43,4 +49,5 @@ export const routingComponents = [
   EventsComponent,
   CourseDetailsComponent,
   HomeComponent,
+  EventDetailsComponent
 ];

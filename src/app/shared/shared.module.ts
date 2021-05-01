@@ -1,4 +1,7 @@
 import { CourseItemComponent } from './../components/course-item/course-item.component';
+import { EventAddComponent } from '../components/events/event-add/event-add.component';
+import { EventItemComponent } from '../components/event-item/event-item.component';
+
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
@@ -7,6 +10,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { RouterModule } from '@angular/router';
 
 import { PrivacyComponent } from '../components/privacy/privacy.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // import { RegistrationComponent } from '../components/registration/registration.component';
 // import { LoginComponent } from '../core/authentication/login-user/login.component';
 
@@ -15,11 +19,15 @@ import { PrivacyComponent } from '../components/privacy/privacy.component';
   declarations: [
     NavbarComponent,
     FooterComponent,
-    CourseItemComponent
+    CourseItemComponent,
+    EventItemComponent,
+    EventAddComponent
   ],
   imports: [
     CommonModule,
     CollapseModule,
+    ReactiveFormsModule,
+    FormsModule,
     RouterModule.forChild([
       { path: 'privacy', component: PrivacyComponent },
       // { path: 'registration', component: RegistrationComponent },
@@ -29,7 +37,9 @@ import { PrivacyComponent } from '../components/privacy/privacy.component';
   exports: [
     NavbarComponent,
     FooterComponent,
-    CourseItemComponent
+    CourseItemComponent,
+    EventItemComponent,
+    EventAddComponent
   ]
 })
 export class SharedModule { }

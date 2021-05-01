@@ -12,6 +12,7 @@
         <li routerLinkActive="active"><a routerLink="/course-details" routerLinkActive="active">Course details</a></li>
         <li routerLinkActive="active"><a routerLink="/trainers" routerLinkActive="active">Trainers</a></li>
         <li routerLinkActive="active"><a routerLink="/events" routerLinkActive="active">Events</a></li>
+        <li routerLinkActive="active"><a routerLink="/event-details" routerLinkActive="active">Event details</a></li>
         <li routerLinkActive="active"><a routerLink="/contact">Contact</a></li>
         <li *ngIf="!isUserAuthenticated" routerLinkActive="active"><a routerLink="/authentication/login">Log in</a></li>
         <li *ngIf="!isUserAuthenticated" routerLinkActive="active"><a
@@ -31,6 +32,7 @@
       <a routerLink="/trainers" (click)="show = !show">Trainers</a>
       <a routerLink="/events" (click)="show = !show">Events</a>
       <a routerLink="/contact" (click)="show = !show">Contact</a>
+      <a routerLink="/event-details" (click)="show = !show">Event details</a>
       <a *ngIf="!isUserAuthenticated" routerLink="/authentication/login" (click)="show = !show">Log in</a>
       <a *ngIf="!isUserAuthenticated" routerLink="/authentication/register" (click)="show = !show">Registration</a>
       <a *ngIf="isUserAuthenticated" class="btn-get-started"(click)="Logout()" (click)="show = !show">Logout</a>
