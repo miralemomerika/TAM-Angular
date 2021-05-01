@@ -5,5 +5,9 @@ export class Kurs
     cijena?: number;
     brojCasova?: number;
     opis?: string;
-    tip?: string;
+    kapacitet?: number;
+    kategorijaKursa!: {
+      id: number,
+      naziv: string
+  };
 }

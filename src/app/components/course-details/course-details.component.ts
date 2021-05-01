@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Kurs } from 'src/app/core/models/Kurs';
+import { PrijavaService } from 'src/app/core/services/prijava.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -9,12 +11,18 @@ import { environment } from 'src/environments/environment';
 })
 export class CourseDetailsComponent implements OnInit {
 
-  constructor(private http: HttpClient) { }
+   public kurs!: Kurs;
+  constructor(private http: HttpClient, private prijavaService: PrijavaService) {
+    this.kurs = history.state.data.kurs;
+  }
 
   ngOnInit(): void {
   }
 
-  Prijava(){
-    alert("Prijava");
+  Prijava(kursId: any): void
+  {
+    this.prijavaService.addPrijava(kursId).subscribe(x => {
+      console.log(x);
+    });
   }
 }
