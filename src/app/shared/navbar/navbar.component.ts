@@ -37,6 +37,7 @@ export class NavbarComponent implements OnInit {
 
   @ViewChild(CollapseDirective, { read: ElementRef, static: false }) collapse !: CollapseDirective;
 
+  brojAktivnihRecenzija!: number;
 
   constructor(private renderer: Renderer2, private authService: AuthenticationService) { }
 
@@ -44,7 +45,7 @@ export class NavbarComponent implements OnInit {
     this.authService.authChanged
     .subscribe((res: any) => {
       this.isUserAuthenticated = res;
-    })
+    });
   }
 
   public Logout = () => {

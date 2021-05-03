@@ -1,0 +1,43 @@
+  <!-- ======= Breadcrumbs ======= -->
+  <div class="breadcrumbs">
+    <div class="container">
+      <h2>Recenzije</h2>
+      <p> Molimo vas da pilikom popunjavanja recenzija budete maksimalno objektivni. </p>
+    </div>
+  </div><!-- End Breadcrumbs -->
+
+<!-- ======= Courses Section ======= -->
+<section id="courses" class="courses">
+  <div class="container" data-aos="fade-up">
+    <div
+      class="row"
+      data-aos="zoom-in"
+      data-aos-delay="100"
+    >
+      <div *ngFor="let recenzija of recenzije" class="col-lg-4 col-md-6 d-flex align-items-stretch">
+        <div class="course-item">
+          <div class="course-content">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              Kurs:
+              <h4>{{recenzija.kurs}}</h4>
+            </div>
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              Predavac:
+              <h4>{{recenzija.predavac}}</h4>
+            </div>
+            <p>
+              Vaše mišljenje nam je jako važno, te vas molimo da popunite
+              recenziju i doprinesete poboljšanju naših usluga
+            </p>
+            <div
+              class="trainer d-flex justify-content-between align-items-center"
+            ></div>
+            <button class="course-btn">Popuni recenziju</button>
+          </div>
+        </div>
+      </div>
+      <!-- End Course Item-->
+    </div>
+  </div>
+</section>
+<!-- End Courses Section -->

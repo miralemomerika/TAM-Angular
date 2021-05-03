@@ -9,7 +9,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { ErrorHandlerService } from './core/services/error-handler.service';
 import { JwtModule } from '@auth0/angular-jwt';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms'
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 export function TokenGetter() {
   return localStorage.getItem('token');
@@ -25,6 +26,7 @@ export function TokenGetter() {
     ModalModule,
     BrowserAnimationsModule,
     SharedModule,
+    CommonModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: TokenGetter,
