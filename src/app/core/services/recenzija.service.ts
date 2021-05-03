@@ -24,8 +24,4 @@ export class RecenzijaService {
   getAktivneRecenzije(): Observable<AktivneRecenzije[]>{
     return this.http.get<AktivneRecenzije[]>(environment.urlAddress + this.controllerPath, httpOptions);
   }
-
-  getBrojAktivnih(): any {
-    return this.http.get<AktivneRecenzije[]>(environment.urlAddress + this.controllerPath + '/brojaktivnih', httpOptions);
-  }
 }

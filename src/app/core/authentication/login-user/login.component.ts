@@ -1,8 +1,12 @@
+import { RecenzijaService } from './../../services/recenzija.service';
+import { SharedDataService } from './../../services/shared-data.service';
 import { Component, OnInit } from '@angular/core';
 import { UserLogin } from '../../../_interfaces/user-login';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthenticationService } from '../../services/authentication.service';
 import { FormControl, Validators, FormBuilder } from '@angular/forms';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -13,19 +17,24 @@ export class LoginComponent implements OnInit {
   public errorMessage: string = '';
   public showError: boolean = false;
   private returnUrl: string = '';
+  brojAktivnihRecenzija!: number | null;
 
   loginForm = this.fb.group({
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required])
   });
 
-  constructor(private authService: AuthenticationService, 
-              private router: Router, 
-              private route: ActivatedRoute, 
-              public fb: FormBuilder) { }
+  constructor(private authService: AuthenticationService,
+              private router: Router,
+              private route: ActivatedRoute,
+              public fb: FormBuilder,
+              private sharedData: SharedDataService,
+              private http: HttpClient,
+              private recenzijaService: RecenzijaService) { }
 
   ngOnInit(): void {
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    this.sharedData.trenutniBroj.subscribe(broj => this.brojAktivnihRecenzija = broj);
   }
 
   public validateControl = (controlName: string) => {
@@ -50,11 +59,19 @@ export class LoginComponent implements OnInit {
       localStorage.setItem("token", res.token);
       this.authService.sendAuthStateChangeNotification(res.isAuthSuccessful);
       this.router.navigate([this.returnUrl]);
-    },
+      const httpOptions = {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${res.token}`
+        })
+      };
+      this.http.get<number | null>(environment.urlAddress + 'api/recenzije' + '/brojaktivnih',
+      httpOptions).subscribe(x => this.sharedData.promijeniBroj(x));
+      },
     (error) => {
       this.errorMessage = error;
       this.showError = true;
-    })
+    });
   }
 
 }

@@ -6,6 +6,7 @@ import { UserLogin } from 'src/app/_interfaces/user-login';
 import { Observable, Subject } from 'rxjs';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { CustomEncoder } from 'src/app/shared/custom-encoder';
+import { SharedDataService } from './shared-data.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class AuthenticationService {
   private authChangedSub = new Subject<boolean>();
   public authChanged = this.authChangedSub.asObservable();
 
-  constructor(private _http: HttpClient, private _envUrl: EnvironmentUrlServiceService, private jwtHelper: JwtHelperService) { }
+  constructor(private _http: HttpClient, private _envUrl: EnvironmentUrlServiceService, private jwtHelper: JwtHelperService, private sharedData: SharedDataService) { }
 
   private createCompleteRoute = (route: string, envAddress: string) => {
     return `${envAddress}${route}`;
@@ -36,6 +37,7 @@ export class AuthenticationService {
   public logout = () => {
     localStorage.removeItem("token");
     this.sendAuthStateChangeNotification(false);
+    this.sharedData.promijeniBroj(null);
   }
 
   public isUserAuthenticated = (): boolean => {

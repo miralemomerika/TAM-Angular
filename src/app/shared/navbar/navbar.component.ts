@@ -1,3 +1,4 @@
+import { SharedDataService } from './../../core/services/shared-data.service';
 import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { CollapseDirective } from 'ngx-bootstrap/collapse';
 import { ModalDirective } from 'ngx-bootstrap/modal';
@@ -20,6 +21,7 @@ export class NavbarComponent implements OnInit {
   router: any;
   route: any;
   show: boolean = false;
+  brojAktivnihRecenzija!: number | null;
 
 
   set isCollapsed(value) {
@@ -37,15 +39,16 @@ export class NavbarComponent implements OnInit {
 
   @ViewChild(CollapseDirective, { read: ElementRef, static: false }) collapse !: CollapseDirective;
 
-  brojAktivnihRecenzija!: number;
 
-  constructor(private renderer: Renderer2, private authService: AuthenticationService) { }
+  constructor(private renderer: Renderer2, private authService: AuthenticationService,
+    private sharedData: SharedDataService) { }
 
   ngOnInit(): void {
     this.authService.authChanged
     .subscribe((res: any) => {
       this.isUserAuthenticated = res;
     });
+    this.sharedData.trenutniBroj.subscribe(broj => this.brojAktivnihRecenzija = broj);
   }
 
   public Logout = () => {
