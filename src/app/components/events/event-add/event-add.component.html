@@ -10,7 +10,7 @@
                 <th>Tip događaja</th>
                 <th>Odobren</th>
                 <th>Akcija</th>
-            </tr>    
+            </tr>
         </thead>
         <tbody class="tbody">
             <tr *ngFor="let dogadjaj of dogadjaji">
@@ -37,66 +37,6 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form [formGroup]="addEventForm" autocomplete="off" novalidate
-                    (ngSubmit)="addEvent(addEventForm.value)">             
-                    <h1>Dodavanje događaja</h1>
-                    <div *ngIf="showError" class="alert alert-danger" role="alert">
-                        <span [innerHTML]="errorMessage"></span>
-                    </div>
-                    <label for="naziv">Naziv</label>
-
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Unesite naziv.." id="naziv" formControlName="naziv"
-                            required>
-                    </div>
-                    <p>
-                        <em *ngIf="validateControl('naziv') && hasError('naziv', 'required')">Naziv
-                            je obavezan!</em>
-                    </p>
-                    <label for="opis">Opis</label>
-            <div class="input-group mb-3">
-                <textarea class="form-control" rows="7" placeholder="Unesite opis.." id="opis" formControlName="opis" required>
-
-                </textarea>
-            </div>
-            <p>
-                <em *ngIf="validateControl('opis') && hasError('opis', 'required')">Opis
-                    je obavezan!</em>
-            </p>
-                    <label for="tipDogadjajaId">Tip događaja</label>
-                    <div class="input-group mb-3">
-                        
-                        <select formControlName="tipDogadjajaId" class="form-control" required>
-                            <option value="" selected disabled hidden>Izaberite tip dogadjaja..</option>
-                            <option  *ngFor="let eventType of eventTypes; let i = index" [value]="eventTypes[i].id">
-                                {{ eventTypes[i].naziv }}
-                            </option>
-                        </select>
-                    </div>
-                    <p>
-                        <em *ngIf="validateControl('tipDogadjajaId') && hasError('tipDogadjajaId', 'required')">Tip
-                            događaja je obavezan
-                        </em>
-                    </p>
-                    <label for="datumIVrijemeOdrzavanja">Datum i vrijeme održavanja</label>
-
-                    <div class="input-group mb-3">
-
-                        <input type="datetime-local" class="form-control" ngModel
-                            placeholder="Datum i vrijeme odrzavanja" id="datumIVrijemeOdrzavanja"
-                            formControlName="datumIVrijemeOdrzavanja" required>
-                    </div>
-                    <p>
-                        <em
-                            *ngIf="validateControl('datumIVrijemeOdrzavanja') && hasError('datumIVrijemeOdrzavanja', 'required')">Datum
-                            i vrijeme
-                            su obavezni!</em>
-                    </p>
-
-                    <button type="submit" class="btn btn-block btn-success"
-                        [disabled]="!addEventForm.valid">Spremi</button>
-
-                </form>
 
             </div>
         </div>
@@ -107,103 +47,3 @@
 <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
     Launch demo modal
   </button> -->
-  
-  <!-- Modal edit -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">          
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-            <form [formGroup]="addEventForm" autocomplete="off" novalidate
-            (ngSubmit)="addEvent(addEventForm.value)">
-            <!-- <form addEventForm="ngForm"> -->
-            <!-- <form autocomplete="off" formGroup="addEventForm"> -->
-            <h1>Uređivanje događaja</h1>
-            <div *ngIf="showError" class="alert alert-danger" role="alert">
-                <span [innerHTML]="errorMessage"></span>
-            </div>
-            <label for="naziv">Naziv</label>
-
-            <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Naziv" id="naziv" formControlName="naziv"
-                    required>
-            </div>
-            <p>
-                <em *ngIf="validateControl('naziv') && hasError('naziv', 'required')">Naziv
-                    je obavezan!</em>
-            </p>
-            <label for="opis">Opis</label>
-            <div class="input-group mb-3">
-                <textarea class="form-control" rows="7" placeholder="Opis" id="opis" formControlName="opis" required>
-
-                </textarea>
-            </div>
-            <p>
-                <em *ngIf="validateControl('opis') && hasError('opis', 'required')">Opis
-                    je obavezan!</em>
-            </p>
-            <label for="tipDogadjajaId">Tip dogadjaja</label>
-            <div class="input-group mb-3">
-
-                <select formControlName="tipDogadjajaId" class="form-control" required>
-                    <option value="" selected disabled hidden>Izaberite tip dogadjaja..</option>
-                    <option *ngFor="let eventType of eventTypes; let i = index" [value]="eventTypes[i].id">
-                        {{ eventTypes[i].naziv }}
-                    </option>
-                </select>
-            </div>
-            <p>
-                <em *ngIf="validateControl('tipDogadjajaId') && hasError('tipDogadjajaId', 'required')">Tip
-                    dogadjaja je
-                    obavezan
-                </em>
-            </p>
-            <label for="datumIVrijemeOdrzavanja">Datum i vrijeme održavanja</label>
-
-            <div class="input-group mb-3">
-
-                <input type="datetime-local" class="form-control" ngModel
-                    placeholder="Datum i vrijeme odrzavanja" id="datumIVrijemeOdrzavanja"
-                    formControlName="datumIVrijemeOdrzavanja" required>
-            </div>
-            <p>
-                <em
-                    *ngIf="validateControl('datumIVrijemeOdrzavanja') && hasError('datumIVrijemeOdrzavanja', 'required')">Datum
-                    i vrijeme
-                    su obavezni!</em>
-            </p>
-
-            <button type="submit" class="btn btn-block btn-success"
-                [disabled]="!addEventForm.valid">Spremi</button>
-
-        </form>
-        </div>        
-      </div>
-    </div>
-  </div>
-
-
-  <!-- Modal delete -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Izbriši</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          Da li ste sigurni da želite obrisati?
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-success" (click)="izbrisi()">Da</button>
-            <button type="button" class="btn btn-danger" data-dismiss="modal">Ne</button>
-        </div>
-      </div>
-    </div>
-  </div>

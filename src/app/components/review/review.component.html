@@ -1,29 +1,31 @@
-  <!-- ======= Breadcrumbs ======= -->
-  <div class="breadcrumbs">
-    <div class="container">
-      <h2>Recenzije</h2>
-      <p> Molimo vas da pilikom popunjavanja recenzija budete maksimalno objektivni. </p>
-    </div>
-  </div><!-- End Breadcrumbs -->
+<!-- ======= Breadcrumbs ======= -->
+<div class="breadcrumbs">
+  <div class="container">
+    <h2>Recenzije</h2>
+    <p>
+      Molimo vas da pilikom popunjavanja recenzija budete maksimalno objektivni.
+    </p>
+  </div>
+</div>
+<!-- End Breadcrumbs -->
 
 <!-- ======= Courses Section ======= -->
 <section id="courses" class="courses">
   <div class="container" data-aos="fade-up">
-    <div
-      class="row"
-      data-aos="zoom-in"
-      data-aos-delay="100"
-    >
-      <div *ngFor="let recenzija of recenzije" class="col-lg-4 col-md-6 d-flex align-items-stretch">
+    <div class="row" data-aos="zoom-in" data-aos-delay="100">
+      <div
+        *ngFor="let recenzija of recenzije"
+        class="col-lg-4 col-md-6 d-flex align-items-stretch"
+      >
         <div class="course-item">
           <div class="course-content">
             <div class="d-flex justify-content-between align-items-center mb-3">
               Kurs:
-              <h4>{{recenzija.kurs}}</h4>
+              <h4>{{ recenzija.kurs }}</h4>
             </div>
             <div class="d-flex justify-content-between align-items-center mb-3">
               Predavac:
-              <h4>{{recenzija.predavac}}</h4>
+              <h4>{{ recenzija.predavac }}</h4>
             </div>
             <p>
               Vaše mišljenje nam je jako važno, te vas molimo da popunite
@@ -32,7 +34,14 @@
             <div
               class="trainer d-flex justify-content-between align-items-center"
             ></div>
-            <button class="course-btn">Popuni recenziju</button>
+            <button
+              class="course-btn"
+              data-toggle="modal"
+              data-target="#staticBackdrop"
+              (click)="GetTrenutnu(recenzija)"
+            >
+              Popuni recenziju
+            </button>
           </div>
         </div>
       </div>
@@ -41,3 +50,82 @@
   </div>
 </section>
 <!-- End Courses Section -->
+
+<div
+  class="modal fade"
+  id="staticBackdrop"
+  data-backdrop="static"
+  data-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form #forma="ngForm" (ngSubmit)="Posalji()">
+          <h1>Recenzija</h1>
+          <label for="ocjenaKursa">{{ odabranaRecenzija?.kurs }}</label>
+          <div class="form-group mb-3">
+            <input
+              [(ngModel)]="trenutnaRecenzija.ocjenaKursa"
+              type="number"
+              class="form-control"
+              placeholder="Unesite ocijenu kursa.."
+              id="ocjenaKursa"
+              name="ocjenaKursa"
+              required
+              #ocjenaKursa="ngModel"
+              [class.is-invalid]="ocjenaKursa.invalid && ocjenaKursa.touched"
+            />
+          </div>
+          <p class="text-danger" [class.d-none]="ocjenaKursa.valid || ocjenaKursa.untouched">Ocjena kursa je obavezna</p>
+          <label for="ocjenaPredavaca">{{ odabranaRecenzija?.predavac }}</label>
+          <div class="input-group mb-3">
+            <input
+              [(ngModel)]="trenutnaRecenzija.ocjenaPredavaca"
+              type="number"
+              class="form-control"
+              placeholder="Unesite ocijenu predavaca.."
+              id="ocjenaPredavaca"
+              name="ocjenaPredavaca"
+              required
+              #ocjenaPredavaca="ngModel"
+              [class.is-invalid]="ocjenaPredavaca.invalid && ocjenaPredavaca.touched"
+            />
+          </div>
+          <p class="text-danger" [class.d-none]="ocjenaPredavaca.valid || ocjenaPredavaca.untouched">Ocjena kursa je obavezna</p>
+
+          <label for="komentar">Komentar</label>
+          <div class="input-group mb-3">
+            <textarea
+              [(ngModel)]="trenutnaRecenzija.komentar"
+              class="form-control"
+              rows="7"
+              placeholder="Unesite komentar.."
+              id="komentar"
+              name="komentar"
+            >
+            </textarea>
+          </div>
+          <p>
+            <!-- error message -->
+          </p>
+          <button [disabled]="forma.form.invalid" type="submit" class="btn btn-block btn-success">
+            Spremi
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

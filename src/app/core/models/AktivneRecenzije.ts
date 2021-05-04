@@ -1,6 +1,6 @@
 export class AktivneRecenzije
 {
-    id?: number;
+    organizacijaKursId?: number;
     kurs?: string;
     predavac?: string;
 }
