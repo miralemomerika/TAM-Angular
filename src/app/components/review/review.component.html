@@ -37,7 +37,7 @@
             <button
               class="course-btn"
               data-toggle="modal"
-              data-target="#staticBackdrop"
+              data-target="#exampleModal"
               (click)="GetTrenutnu(recenzija)"
             >
               Popuni recenziju
@@ -51,24 +51,11 @@
 </section>
 <!-- End Courses Section -->
 
-<div
-  class="modal fade"
-  id="staticBackdrop"
-  data-backdrop="static"
-  data-keyboard="false"
-  tabindex="-1"
-  aria-labelledby="staticBackdropLabel"
-  aria-hidden="true"
->
-  <div class="modal-dialog">
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <button
-          type="button"
-          class="close"
-          data-dismiss="modal"
-          aria-label="Close"
-        >
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -129,7 +116,7 @@
               hidden
             />
           </div>
-          <button [disabled]="forma.form.invalid" type="submit" class="btn btn-block btn-success">
+          <button [disabled]="forma.form.invalid" type="submit" class="btn btn-block btn-success" data-dismiss="modal">
             Spremi
           </button>
         </form>
