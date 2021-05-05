@@ -1,6 +1,6 @@
 export class Recenzija
 {
-    organizacijaKursId?: number;
+    organizacijaKursaId?: number;
     ocjenaKursa?: number;
     ocjenaPredavaca?: number;
     komentar?: string;

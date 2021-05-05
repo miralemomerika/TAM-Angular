@@ -19,7 +19,7 @@ export class ReviewComponent implements OnInit {
     this.recenzijeService.getAktivneRecenzije().subscribe(x => {
       this.recenzije = x;
       this.trenutnaRecenzija = {
-        organizacijaKursId: 1,
+        organizacijaKursaId: 0,
         ocjenaKursa: 5,
         ocjenaPredavaca: 5
       };
@@ -32,12 +32,16 @@ export class ReviewComponent implements OnInit {
   GetTrenutnu(recenzija: AktivneRecenzije): void
   {
     this.odabranaRecenzija = recenzija;
-    this.trenutnaRecenzija.organizacijaKursId = recenzija.organizacijaKursId;
-    console.log(this.odabranaRecenzija);
+    this.trenutnaRecenzija = {
+      organizacijaKursaId: this.odabranaRecenzija.organizacijaKursId,
+      ocjenaKursa: 5,
+      ocjenaPredavaca: 5
+    };
   }
 
   Posalji(): void
   {
     console.log(this.trenutnaRecenzija);
+    this.recenzijeService.createRecenzija(this.trenutnaRecenzija).subscribe();
   }
 }

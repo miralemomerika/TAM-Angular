@@ -1,3 +1,4 @@
+import { Recenzija } from './../models/Recenzija';
 import { AktivneRecenzije } from './../models/AktivneRecenzije';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -23,5 +24,10 @@ export class RecenzijaService {
 
   getAktivneRecenzije(): Observable<AktivneRecenzije[]>{
     return this.http.get<AktivneRecenzije[]>(environment.urlAddress + this.controllerPath, httpOptions);
+  }
+
+  createRecenzija(recenzija: Recenzija): Observable<any>
+  {
+    return this.http.post(environment.urlAddress + this.controllerPath, recenzija, httpOptions);
   }
 }

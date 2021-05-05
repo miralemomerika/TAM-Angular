@@ -118,9 +118,17 @@
             >
             </textarea>
           </div>
-          <p>
-            <!-- error message -->
-          </p>
+          <div class="input-group mb-3">
+            <input
+              [(ngModel)]="trenutnaRecenzija.organizacijaKursaId"
+              type="number"
+              class="form-control"
+              placeholder="Unesite ocijenu predavaca.."
+              id="organizacijaKursaId"
+              name="organizacijaKursaId"
+              hidden
+            />
+          </div>
           <button [disabled]="forma.form.invalid" type="submit" class="btn btn-block btn-success">
             Spremi
           </button>
