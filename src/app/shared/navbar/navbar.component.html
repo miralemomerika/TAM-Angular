@@ -14,6 +14,12 @@
         <li routerLinkActive="active"><a routerLink="/events" routerLinkActive="active">Events</a></li>
         <li routerLinkActive="active"><a routerLink="/event-details" routerLinkActive="active">Event details</a></li>
         <li routerLinkActive="active"><a routerLink="/contact">Contact</a></li>
+        <li routerLinkActive="active">
+          <a routerLink="/review">
+            Review
+            <span class="badge badge-light ml-2">{{ brojAktivnihRecenzija }}</span>
+          </a>
+        </li>
         <li *ngIf="!isUserAuthenticated" routerLinkActive="active"><a routerLink="/authentication/login">Log in</a></li>
         <li *ngIf="!isUserAuthenticated" routerLinkActive="active"><a
             routerLink="/authentication/register">Registration</a></li>

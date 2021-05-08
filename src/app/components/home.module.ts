@@ -8,13 +8,15 @@ import { CourseItemComponent } from './course-item/course-item.component';
 import { EventAddComponent } from './events/event-add/event-add.component';
 import { EventItemComponent } from './event-item/event-item.component';
 import { EventDetailsComponent } from './event-details/event-details.component';
+import { ReviewComponent } from './review/review.component';
 
 @NgModule({
   declarations: [
    CourseItemComponent,
     EventAddComponent,
     EventItemComponent,
-    EventDetailsComponent
+    EventDetailsComponent,
+    ReviewComponent
   ],
   imports: [
     CommonModule, 

@@ -1,3 +1,4 @@
+import { ReviewComponent } from './components/review/review.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { TrainersComponent } from './components/trainers/trainers.component';
 import { EventsComponent } from './components/events/events.component';
@@ -26,6 +27,7 @@ const routes: Routes = [
   { path: 'contact', component: ContactComponent },
   { path: 'login', component: LoginComponent },
   { path: 'event-details', component: EventDetailsComponent},
+  { path: 'review', component: ReviewComponent},
   // { path: 'authentication/register', component: RegisterUserComponent },
   {
     path: '404',
@@ -49,5 +51,6 @@ export const routingComponents = [
   EventsComponent,
   CourseDetailsComponent,
   HomeComponent,
-  EventDetailsComponent
+  EventDetailsComponent,
+  ReviewComponent
 ];
