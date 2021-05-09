@@ -1,3 +1,5 @@
+import { StatistikaService } from './../../core/services/statistika.service';
+import { Statistika } from './../../core/models/Statistika';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  statistika!: Statistika;
+
+  constructor(private statistikaService: StatistikaService) {
+    this.statistikaService.getStatistika().subscribe(x => {
+      this.statistika = x;
+    });
+   }
 
   ngOnInit(): void {
   }
+
 
 }
