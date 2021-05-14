@@ -9,12 +9,13 @@
 
 /* Style navigation menu links */
 .topnav a {
-  color: white;
   padding: 14px 16px;
   text-decoration: none;
   font-size: 17px;
   display: block;
   border-bottom: 1px solid #5fcf80;
+  background-color: white;
+  color: #37423b;
 }
 
 /* Add a grey background color on mouse-over */
