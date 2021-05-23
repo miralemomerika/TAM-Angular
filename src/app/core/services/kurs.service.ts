@@ -24,4 +24,8 @@ export class KursService {
   getKurseve(): Observable<Kurs[]>{
     return this.http.get<Kurs[]>(environment.urlAddress + this.controllerPath, httpOptions);
   }
+
+  getNajpopularnije(): Observable<Kurs[]>{
+    return this.http.get<Kurs[]>(environment.urlAddress + this.controllerPath + '/najpopularniji', httpOptions);
+  }
 }

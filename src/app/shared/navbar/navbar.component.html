@@ -11,15 +11,15 @@
         <li routerLinkActive="active"><a routerLink="/courses" routerLinkActive="active">Kursevi</a></li>
         <!-- <li routerLinkActive="active"><a routerLink="/course-details" routerLinkActive="active">Course details</a></li> -->
         <!-- <li routerLinkActive="active"><a routerLink="/trainers" routerLinkActive="active">Predavači</a></li> -->
-        <li routerLinkActive="active"><a routerLink="/events" routerLinkActive="active">Događaji</a></li>
-        <!-- <li routerLinkActive="active"><a routerLink="/event-details" routerLinkActive="active">Event details</a></li> -->
+        <!-- <li routerLinkActive="active"><a routerLink="/events" routerLinkActive="active">Događaji</a></li> -->
+        <li routerLinkActive="active"><a routerLink="/event-details" routerLinkActive="active">Događaji</a></li>
         <li routerLinkActive="active"><a routerLink="/contact">Kontakt</a></li>
-        <li routerLinkActive="active">
+        <!-- <li routerLinkActive="active">
           <a routerLink="/review">
             Recenzije
             <span class="badge badge-light ml-2">{{ brojAktivnihRecenzija }}</span>
           </a>
-        </li>
+        </li> -->
         <li *ngIf="!isUserAuthenticated" routerLinkActive="active"><a routerLink="/authentication/login">Prijava</a></li>
         <li *ngIf="!isUserAuthenticated" routerLinkActive="active"><a
             routerLink="/authentication/register">Registracija</a></li>
@@ -33,16 +33,16 @@
     <div id="myLinks">
       <a routerLink="/home" (click)="show = !show">Početna</a>
       <!-- <a routerLink="/about" (click)="show = !show">About</a> -->
-      <a routerLink="/courses" (click)="show = !show">Kursevi</a>
+      <!-- <a routerLink="/courses" (click)="show = !show">Kursevi</a> -->
       <!-- <a routerLink="/course-details" (click)="show = !show">Course Details</a> -->
       <!-- <a routerLink="/trainers" (click)="show = !show">Trainers</a> -->
-      <a routerLink="/events" (click)="show = !show">Događaji</a>
+      <!-- <a routerLink="/events" (click)="show = !show">Događaji</a> -->
       <a routerLink="/review">
         Recenzije
         <span class="badge badge-light ml-2">{{ brojAktivnihRecenzija }}</span>
       </a>
       <a routerLink="/contact" (click)="show = !show">Kontakt</a>
-      <!-- <a routerLink="/event-details" (click)="show = !show">Event details</a> -->
+      <a routerLink="/event-details" (click)="show = !show">Događaji</a>
       <a *ngIf="!isUserAuthenticated" routerLink="/authentication/login" (click)="show = !show">Prijava</a>
       <a *ngIf="!isUserAuthenticated" routerLink="/authentication/register" (click)="show = !show">Registracija</a>
       <a *ngIf="isUserAuthenticated" class="btn-get-started"(click)="Logout()" (click)="show = !show">Odjava</a>

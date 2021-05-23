@@ -13,7 +13,6 @@ export class EventDetailsComponent implements OnInit {
   constructor(private dogadjajiService: DogadjajiService) {
     this.dogadjajiService.getDogadjaje().subscribe(x => {
       this.dogadjaji=x;
-      // console.log(this.dogadjaji);
     });
    }
 
