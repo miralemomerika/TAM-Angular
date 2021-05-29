@@ -10,3 +10,16 @@
   display: inline-block;
   cursor: pointer;
 }
+
+.appCourseItem
+{
+  width: 33%;
+  margin-bottom: 30px;
+}
+
+@media (max-width: 800px) {
+  .appCourseItem{
+    width: 100%;
+    margin-bottom: 30px;
+  }
+}
