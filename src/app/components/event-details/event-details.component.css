@@ -1,0 +1,11 @@
+.appEventItem{
+  width: 33%;
+  margin-bottom: 30px;
+}
+
+@media (max-width: 800px) {
+  .appEventItem{
+    width: 100%;
+    margin-bottom: 30px;
+  }
+}

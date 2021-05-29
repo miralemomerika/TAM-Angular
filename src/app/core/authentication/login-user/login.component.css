@@ -3,4 +3,14 @@ em {
   }
   .ng-invalid.ng-touched {
     border-color: red;
-  }  
+  }
+
+  .info-text{
+    width: 44%;
+  }
+
+  @media (max-width: 800px) {
+    .info-text{
+      width: 100%;
+    }
+  }
