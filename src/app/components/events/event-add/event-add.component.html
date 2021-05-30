@@ -1,3 +1,4 @@
+<!--- Get za dogadjaje --->
 <button type="button" (click)="dodaj()" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
   Dodaj događaj
 </button>
@@ -27,6 +28,7 @@
   </table>
 
 </div>
+<!--- Dodavanje dogadjaja --->
 <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1"
   aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -55,9 +57,8 @@
                   </p>
                   <label for="opis">Opis</label>
           <div class="input-group mb-3">
-              <textarea class="form-control" rows="7" placeholder="Unesite opis.." id="opis" formControlName="opis" required>
+              <input type="text" class="form-control" rows="7" placeholder="Unesite opis.." id="opis" formControlName="opis" required>
 
-              </textarea>
           </div>
           <p>
               <em *ngIf="validateControl('opis') && hasError('opis', 'required')">Opis
@@ -82,7 +83,7 @@
 
                   <div class="input-group mb-3">
 
-                      <input type="datetime-local" class="form-control" ngModel
+                      <input type="datetime-local" class="form-control" 
                           placeholder="Datum i vrijeme odrzavanja" id="datumIVrijemeOdrzavanja"
                           formControlName="datumIVrijemeOdrzavanja" required>
                   </div>
@@ -108,12 +109,14 @@
   Launch demo modal
 </button> -->
 
+<!--- Edit dogadjaja --->
+
 <!-- Modal edit -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <button type="button" class="close" #closeedit data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -138,9 +141,7 @@
           </p>
           <label for="opis">Opis</label>
           <div class="input-group mb-3">
-              <textarea class="form-control" rows="7" placeholder="Opis" id="opis" formControlName="opis" required>
-
-              </textarea>
+              <input type="text" class="form-control" rows="7" placeholder="Opis" id="opis" formControlName="opis" required>
           </div>
           <p>
               <em *ngIf="validateControl('opis') && hasError('opis', 'required')">Opis
@@ -166,7 +167,7 @@
 
           <div class="input-group mb-3">
 
-              <input type="datetime-local" class="form-control" ngModel
+              <input type="datetime-local" class="form-control" 
                   placeholder="Datum i vrijeme odrzavanja" id="datumIVrijemeOdrzavanja"
                   formControlName="datumIVrijemeOdrzavanja" required>
           </div>

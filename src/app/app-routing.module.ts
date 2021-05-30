@@ -14,6 +14,7 @@ import { CourseDetailsComponent } from './components/course-details/course-detai
 import { Error404Component } from './components/error404/error404.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EventDetailsComponent } from './components/event-details/event-details.component';
+import { OrganizerGuard } from './shared/guards/organizer.guard';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -21,7 +22,7 @@ const routes: Routes = [
   { path: 'authentication', loadChildren: () => import('./core/authentication/authentication.module').then( m => m.AuthenticationModule)},
   { path: 'about', component: AboutComponent },
   { path: 'courses', component: CoursesComponent },
-  { path: 'events', component: EventsComponent },
+  { path: 'events', component: EventsComponent, canActivate:[OrganizerGuard] },
   { path: 'course-details', component: CourseDetailsComponent },
   { path: 'trainers', component: TrainersComponent },
   { path: 'contact', component: ContactComponent },
