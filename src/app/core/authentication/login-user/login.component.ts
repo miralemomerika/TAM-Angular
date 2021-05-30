@@ -7,6 +7,7 @@ import { AuthenticationService } from '../../services/authentication.service';
 import { FormControl, Validators, FormBuilder } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Component({
   selector: 'app-login',
@@ -30,7 +31,8 @@ export class LoginComponent implements OnInit {
               public fb: FormBuilder,
               private sharedData: SharedDataService,
               private http: HttpClient,
-              private recenzijaService: RecenzijaService) { }
+              private recenzijaService: RecenzijaService,
+              private jwtHelper:JwtHelperService) { }
 
   ngOnInit(): void {
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
@@ -58,6 +60,12 @@ export class LoginComponent implements OnInit {
     .subscribe((res: any) => {
       localStorage.setItem("token", res.token);
       this.authService.sendAuthStateChangeNotification(res.isAuthSuccessful);
+      let isUserOrganizer:boolean = false;
+      const decodedToken = this.jwtHelper.decodeToken(res.token);
+      const role = decodedToken['http://schemas.microsoft.com/ws/2008/06/identity/claims/role']
+      if(role==='Organizator')
+       isUserOrganizer=true;
+      this.authService.sendOrganizerChangeNotification(isUserOrganizer);
       this.router.navigate([this.returnUrl]);
       const httpOptions = {
         headers: new HttpHeaders({
