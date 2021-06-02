@@ -1,3 +1,4 @@
+import { ReviewComponent } from './components/review/review.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { TrainersComponent } from './components/trainers/trainers.component';
 import { EventsComponent } from './components/events/events.component';
@@ -15,6 +16,7 @@ import { IspitComponent } from './components/ispit/ispit.component';
 import { GuardGuard } from './core/services/guard.guard';
 import { StudentIspitComponent } from './components/student-ispit/student-ispit.component';
 import { StudentIspitDetaljiComponent } from './components/student-ispit-detalji/student-ispit-detalji.component';
+import { OrganizerGuard } from './shared/guards/organizer.guard';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -22,7 +24,7 @@ const routes: Routes = [
   { path: 'authentication', loadChildren: () => import('./core/authentication/authentication.module').then( m => m.AuthenticationModule)},
   { path: 'about', component: AboutComponent },
   { path: 'courses', component: CoursesComponent },
-  { path: 'events', component: EventsComponent },
+  { path: 'events', component: EventsComponent, canActivate:[OrganizerGuard] },
   { path: 'course-details', component: CourseDetailsComponent },
   { path: 'trainers', component: TrainersComponent },
   { path: 'contact', component: ContactComponent },
@@ -31,6 +33,7 @@ const routes: Routes = [
   { path: 'exams', component: IspitComponent },
   { path: 'student-exams', component: StudentIspitComponent },
   { path: 'ispit-detalji', component: StudentIspitDetaljiComponent },
+  { path: 'review', component: ReviewComponent},
   // { path: 'authentication/register', component: RegisterUserComponent },
   {
     path: '404',
@@ -57,5 +60,6 @@ export const routingComponents = [
   EventDetailsComponent,
   IspitComponent,
   StudentIspitComponent,
-  StudentIspitDetaljiComponent
+  StudentIspitDetaljiComponent,
+  ReviewComponent
 ];

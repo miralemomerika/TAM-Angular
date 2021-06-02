@@ -6,7 +6,9 @@ import { UserLogin } from 'src/app/_interfaces/user-login';
 import { Observable, Subject } from 'rxjs';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { CustomEncoder } from 'src/app/shared/custom-encoder';
-import { Router } from '@angular/router';
+import { SharedDataService } from './shared-data.service';
+import { Router } from "@angular/router"
+import { not } from '@angular/compiler/src/output/output_ast';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +17,10 @@ export class AuthenticationService {
   private authChangedSub = new Subject<boolean>();
   public authChanged = this.authChangedSub.asObservable();
 
-  constructor(private _http: HttpClient, private _envUrl: EnvironmentUrlServiceService, private jwtHelper: JwtHelperService, private _router: Router) { }
+  private organizerChangedSub = new Subject<boolean>();
+  public organizerChanged = this.organizerChangedSub.asObservable();
+
+  constructor(private _http: HttpClient, private _envUrl: EnvironmentUrlServiceService, private jwtHelper: JwtHelperService, private sharedData: SharedDataService, private router: Router) { }
 
   private createCompleteRoute = (route: string, envAddress: string) => {
     return `${envAddress}${route}`;
@@ -34,20 +39,38 @@ export class AuthenticationService {
     this.authChangedSub.next(isAuthenticated);
   }
 
+  public sendOrganizerChangeNotification = (isUserOrganizer : boolean) => {
+    this.organizerChangedSub.next(isUserOrganizer);
+  }
+
   public logout = () => {
     localStorage.removeItem("token");
     this.sendAuthStateChangeNotification(false);
-    this._router.navigate(['/home']);
+    this.sendOrganizerChangeNotification(false);
+    this.sharedData.promijeniBroj(null);
+    this.router.navigate(['/home']);
   }
 
   public isUserAuthenticated = (): boolean => {
-    const token: any = localStorage.getItem('token') != null ? localStorage.getItem('token') : undefined;
 
+    const token: any = localStorage.getItem('token') != null ? localStorage.getItem('token') : undefined;
     if( typeof token === 'undefined' || this.jwtHelper.isTokenExpired(token))
       return false;
     else
       return true;
+
   }
+  public isUserOrganizer = (): boolean => {
+    const token = localStorage.getItem("token");
+    if(token != null)
+    {
+      const decodedToken = this.jwtHelper.decodeToken(token);
+      const role = decodedToken['http://schemas.microsoft.com/ws/2008/06/identity/claims/role']
+      return role == 'Organizator';
+    }
+    return false;
+  }
+
 
   public confirmEmail = (route: string, token: string, email: string) => {
 

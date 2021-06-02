@@ -13,6 +13,7 @@ import { IspitItemsComponent } from './ispit-items/ispit-items.component';
 import { UploadComponent } from './upload/upload.component';
 import { StudentIspitComponent } from './student-ispit/student-ispit.component';
 import { StudentIspitDetaljiComponent } from './student-ispit-detalji/student-ispit-detalji.component';
+import { ReviewComponent } from './review/review.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { StudentIspitDetaljiComponent } from './student-ispit-detalji/student-is
     UploadComponent,
     StudentIspitComponent,
     StudentIspitDetaljiComponent,
+    ReviewComponent
   ],
   imports: [
     CommonModule, 

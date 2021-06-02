@@ -3,9 +3,9 @@
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="d-flex justify-content-center align-items-center">
     <div class="container position-relative" data-aos="zoom-in" data-aos-delay="100">
-      <h1>Learning Today,<br>Leading Tomorrow</h1>
-      <h2>We are team of talented designers making websites with Bootstrap</h2>
-      <a routerLink="/courses" class="btn-get-started">Get Started</a>
+      <h1>Koliko znaš,<br>toliko vrijediš</h1>
+      <h2>Kulturni centar TAM je tu da vam pomogne u izgradnji vaših karijera</h2>
+      <a routerLink="/courses" class="btn-get-started">Počnimo</a>
     </div>
   </section><!-- End Hero -->
 
@@ -16,8 +16,8 @@
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-          <h2>About</h2>
-          <p>About Us</p>
+          <h2>Informacije</h2>
+          <p>O nama</p>
         </div>
 
         <div class="row">
@@ -25,20 +25,20 @@
             <img src="assets/img/about.jpg" class="img-fluid" alt="">
           </div>
           <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
-            <h3>Voluptatem dignissimos provident quasi corporis voluptates sit assumenda.</h3>
+            <h3>Nudimo veliki izbor kurseva i mogućnost organizovanja različitih vrsta događaja</h3>
             <p class="font-italic">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-              magna aliqua.
+              Misija našeg centra je doprinos zajednici nudeći širok diapazon kurseva koji će pomoći pri
+              usavršavanju mladih ljudi i izgradnji njihovih karijera.
             </p>
             <ul>
-              <li><i class="icofont-check-circled"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-              <li><i class="icofont-check-circled"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-              <li><i class="icofont-check-circled"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
+              <li><i class="icofont-check-circled"></i> Kvalitetno i profesionalno osoblje.</li>
+              <li><i class="icofont-check-circled"></i> Kursevi za sve uzraste.</li>
+              <li><i class="icofont-check-circled"></i> Razne vrste događaja. </li>
             </ul>
             <p>
-              Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+              Investirajte u svoje znanje, jer znanje je moć
             </p>
-            <a href="about.html" class="learn-more-btn">Learn More</a>
+            <!-- <a href="about.html" class="learn-more-btn">Learn More</a> -->
           </div>
         </div>
 
@@ -52,23 +52,23 @@
         <div class="row counters">
 
           <div class="col-lg-3 col-6 text-center">
-            <span data-toggle="counter-up">1232</span>
-            <p>Students</p>
+            <span data-toggle="counter-up">{{ statistika.brojPolaznika }}</span>
+            <p>Polaznici kurseva</p>
           </div>
 
           <div class="col-lg-3 col-6 text-center">
-            <span data-toggle="counter-up">64</span>
-            <p>Courses</p>
+            <span data-toggle="counter-up">{{ statistika.brojKurseva }}</span>
+            <p>Kursevi</p>
           </div>
 
           <div class="col-lg-3 col-6 text-center">
-            <span data-toggle="counter-up">42</span>
-            <p>Events</p>
+            <span data-toggle="counter-up">{{ statistika.brojDogadjaja }}</span>
+            <p>Događaji</p>
           </div>
 
           <div class="col-lg-3 col-6 text-center">
-            <span data-toggle="counter-up">15</span>
-            <p>Trainers</p>
+            <span data-toggle="counter-up">{{ statistika.brojPredavaca }}</span>
+            <p>Predavači</p>
           </div>
 
         </div>
@@ -83,14 +83,15 @@
         <div class="row">
           <div class="col-lg-4 d-flex align-items-stretch">
             <div class="content">
-              <h3>Why Choose Mentor?</h3>
+              <h3>Zašto izabrati TAM</h3>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit
-                Asperiores dolores sed et. Tenetur quia eos. Autem tempore quibusdam vel necessitatibus optio ad corporis.
+                Kulturni centar TAM se nalazi u samom centru najljepšeg grada na Neretvi. Pored atraktivne lokacije, pružamo
+                najveći izbor kurseva za sve uzraste, te organizujemo najviše događaja u gradu. Ako već niste,
+                dođite i posjetite nas. Radujemo se vašem dolasku :)
               </p>
-              <div class="text-center">
+              <!-- <div class="text-center">
                 <a href="about.html" class="more-btn">Learn More <i class="bx bx-chevron-right"></i></a>
-              </div>
+              </div> -->
             </div>
           </div>
           <div class="col-lg-8 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
@@ -99,22 +100,22 @@
                 <div class="col-xl-4 d-flex align-items-stretch">
                   <div class="icon-box mt-4 mt-xl-0">
                     <i class="bx bx-receipt"></i>
-                    <h4>Corporis voluptates sit</h4>
-                    <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip</p>
+                    <h4>Priznate diplome</h4>
+                    <p>Poslije svakog uspješnp završenog kursa, dobijate vrlo priznatu diplomu</p>
                   </div>
                 </div>
                 <div class="col-xl-4 d-flex align-items-stretch">
                   <div class="icon-box mt-4 mt-xl-0">
-                    <i class="bx bx-cube-alt"></i>
-                    <h4>Ullamco laboris ladore pan</h4>
-                    <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt</p>
+                    <i class="bx bx-home"></i>
+                    <h4>Atraktivna lokacija</h4>
+                    <p>Smješteni smo u samom centru grada, na trgu Musala broj 1</p>
                   </div>
                 </div>
                 <div class="col-xl-4 d-flex align-items-stretch">
                   <div class="icon-box mt-4 mt-xl-0">
-                    <i class="bx bx-images"></i>
-                    <h4>Labore consequatur</h4>
-                    <p>Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis facere</p>
+                    <i class="bx bx-money"></i>
+                    <h4>Povrat novca polaznicima</h4>
+                    <p>Za 3 najbolja polaznika kursa je osiguran povrat novca</p>
                   </div>
                 </div>
               </div>
@@ -130,92 +131,16 @@
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-          <h2>Courses</h2>
-          <p>Popular Courses</p>
+          <h2>Kursevi</h2>
+          <p>Najpopularniji kursevi</p>
         </div>
 
         <div class="row" data-aos="zoom-in" data-aos-delay="100">
 
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-            <div class="course-item">
-              <img src="assets/img/course-1.jpg" class="img-fluid" alt="...">
-              <div class="course-content">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                  <h4>Web Development</h4>
-                  <p class="price">$169</p>
-                </div>
-
-                <h3><a href="course-details.html">Website Design</a></h3>
-                <p>Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae dolores dolorem tempore.</p>
-                <div class="trainer d-flex justify-content-between align-items-center">
-                  <div class="trainer-profile d-flex align-items-center">
-                    <img src="assets/img/trainers/trainer-1.jpg" class="img-fluid" alt="">
-                    <span>Antonio</span>
-                  </div>
-                  <div class="trainer-rank d-flex align-items-center">
-                    <i class="bx bx-user"></i>&nbsp;50
-                    &nbsp;&nbsp;
-                    <i class="bx bx-heart"></i>&nbsp;65
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div> <!-- End Course Item-->
-
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
-            <div class="course-item">
-              <img src="assets/img/course-2.jpg" class="img-fluid" alt="...">
-              <div class="course-content">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                  <h4>Marketing</h4>
-                  <p class="price">$250</p>
-                </div>
-
-                <h3><a href="course-details.html">Search Engine Optimization</a></h3>
-                <p>Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae dolores dolorem tempore.</p>
-                <div class="trainer d-flex justify-content-between align-items-center">
-                  <div class="trainer-profile d-flex align-items-center">
-                    <img src="assets/img/trainers/trainer-2.jpg" class="img-fluid" alt="">
-                    <span>Lana</span>
-                  </div>
-                  <div class="trainer-rank d-flex align-items-center">
-                    <i class="bx bx-user"></i>&nbsp;35
-                    &nbsp;&nbsp;
-                    <i class="bx bx-heart"></i>&nbsp;42
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div> <!-- End Course Item-->
-
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
-            <div class="course-item">
-              <img src="assets/img/course-3.jpg" class="img-fluid" alt="...">
-              <div class="course-content">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                  <h4>Content</h4>
-                  <p class="price">$180</p>
-                </div>
-
-                <h3><a href="course-details.html">Copywriting</a></h3>
-                <p>Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae dolores dolorem tempore.</p>
-                <div class="trainer d-flex justify-content-between align-items-center">
-                  <div class="trainer-profile d-flex align-items-center">
-                    <img src="assets/img/trainers/trainer-3.jpg" class="img-fluid" alt="">
-                    <span>Brandon</span>
-                  </div>
-                  <div class="trainer-rank d-flex align-items-center">
-                    <i class="bx bx-user"></i>&nbsp;20
-                    &nbsp;&nbsp;
-                    <i class="bx bx-heart"></i>&nbsp;85
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div> <!-- End Course Item-->
+            <app-course-item *ngFor="let kurs of kursevi"
+            [kurs]="kurs" class="appCourseItem"></app-course-item>
 
         </div>
-
       </div>
     </section><!-- End Popular Courses Section -->
 
@@ -224,25 +149,24 @@
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-          <h2>Trainers</h2>
-          <p>Our Professional Trainers</p>
+          <h2>Menadžment</h2>
+          <p>Menadžment kulturnog centra</p>
         </div>
 
         <div class="row" data-aos="zoom-in" data-aos-delay="100">
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
             <div class="member">
-              <img src="assets/img/trainers/trainer-1.jpg" class="img-fluid" alt="">
+              <img src="assets/img/aldin.jpeg" class="img-fluid" alt="">
               <div class="member-content">
-                <h4>Walter White</h4>
-                <span>Web Development</span>
+                <h4>Aldin Tanović</h4>
+                <span>CEO</span>
                 <p>
-                  Magni qui quod omnis unde et eos fuga et exercitationem. Odio veritatis perspiciatis quaerat qui aut aut aut
+                  Aldin Tanović je CEO firme i jedan od 3 osnivača centra.
                 </p>
                 <div class="social">
-                  <a href=""><i class="icofont-twitter"></i></a>
-                  <a href=""><i class="icofont-facebook"></i></a>
+                  <a href="https://bs-ba.facebook.com/aldin.tanovic1"><i class="icofont-facebook"></i></a>
                   <a href=""><i class="icofont-instagram"></i></a>
-                  <a href=""><i class="icofont-linkedin"></i></a>
+                  <a href="https://www.linkedin.com/in/aldin-tanovi%C4%87-842284200/?originalSubdomain=ba"><i class="icofont-linkedin"></i></a>
                 </div>
               </div>
             </div>
@@ -250,18 +174,17 @@
 
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
             <div class="member">
-              <img src="assets/img/trainers/trainer-2.jpg" class="img-fluid" alt="">
+              <img src="assets/img/miralem.jpeg" class="img-fluid" alt="">
               <div class="member-content">
-                <h4>Sarah Jhinson</h4>
-                <span>Marketing</span>
+                <h4>Miralem Omerika</h4>
+                <span>CEO</span>
                 <p>
-                  Repellat fugiat adipisci nemo illum nesciunt voluptas repellendus. In architecto rerum rerum temporibus
+                  Miralem Omerika je CEO firme i jedan od 3 osnivača centra.
                 </p>
                 <div class="social">
-                  <a href=""><i class="icofont-twitter"></i></a>
-                  <a href=""><i class="icofont-facebook"></i></a>
-                  <a href=""><i class="icofont-instagram"></i></a>
-                  <a href=""><i class="icofont-linkedin"></i></a>
+                  <a href="https://www.facebook.com/miralem05"><i class="icofont-facebook"></i></a>
+                  <a href="https://www.instagram.com/miralem05/"><i class="icofont-instagram"></i></a>
+                  <a href="https://www.linkedin.com/in/miralem05/?originalSubdomain=ba"><i class="icofont-linkedin"></i></a>
                 </div>
               </div>
             </div>
@@ -269,18 +192,17 @@
 
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
             <div class="member">
-              <img src="assets/img/trainers/trainer-3.jpg" class="img-fluid" alt="">
+              <img src="assets/img/tarik.jpg" class="img-fluid" alt="">
               <div class="member-content">
-                <h4>William Anderson</h4>
-                <span>Content</span>
+                <h4>Tarik Čolakhodžić</h4>
+                <span>CEO</span>
                 <p>
-                  Voluptas necessitatibus occaecati quia. Earum totam consequuntur qui porro et laborum toro des clara
+                  Tarik Čolakhodžić je CEO firme i jedan od 3 osnivača centra.
                 </p>
                 <div class="social">
-                  <a href=""><i class="icofont-twitter"></i></a>
-                  <a href=""><i class="icofont-facebook"></i></a>
-                  <a href=""><i class="icofont-instagram"></i></a>
-                  <a href=""><i class="icofont-linkedin"></i></a>
+                  <a href="https://www.facebook.com/tarik.colakhodzic.7/"><i class="icofont-facebook"></i></a>
+                  <a href="https://www.instagram.com/tariq_colakhodzic/"><i class="icofont-instagram"></i></a>
+                  <a href="https://ba.linkedin.com/in/tarik-%C4%8Dolakhod%C5%BEi%C4%87-6b6aa61a9"><i class="icofont-linkedin"></i></a>
                 </div>
               </div>
             </div>

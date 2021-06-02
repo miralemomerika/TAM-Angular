@@ -20,7 +20,8 @@ export class EventAddComponent implements OnInit {
   addEventForm: FormGroup;
   isSubmitted=false;
   dogadjajTemp!: DogadjajGet;
-  
+  @ViewChild('closeedit') closeedit: any;
+
   constructor(private _dogadjajiService: DogadjajiService, private fb: FormBuilder, private router: Router) { 
     this.addEventForm = this.fb.group({
       naziv: new FormControl('', [Validators.required]),
@@ -75,6 +76,7 @@ export class EventAddComponent implements OnInit {
       this._dogadjajiService.createDogadjaj(dogadjaj)
       .subscribe(_ => {
         this.router.navigate(["/events"]);
+        location.reload();
         },
         error => {
           this.errorMessage = error;
@@ -90,25 +92,22 @@ export class EventAddComponent implements OnInit {
         tipDogadjajaId: formValues.tipDogadjajaId,
         opis:formValues.opis
       };
-      
       this._dogadjajiService.updateDogadjaj(dogadjaj)
       .subscribe(_ => {
           this.router.navigate(["/events"]);
+          location.reload();
         },
         error => {
           this.errorMessage = error;
           this.showError = true;
         })
+        
     }
-  location.reload();      
+    
   }
   
   public dodaj = ()=>
   {
-    //ovo vidjeti
-    let datum=new Date().toLocaleString();
-    let datum2=new Date().toTimeString();
-    let vrijeme=new Date().toLocaleTimeString();
     
     this.addEventForm = this.fb.group({
       naziv: '',

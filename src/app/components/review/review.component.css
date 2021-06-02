@@ -8,9 +8,5 @@
   font-size: 14px;
   display: inline-block;
   cursor: pointer;
-}
-
-.course-item{
-  margin-right: 10px;
-  margin-left: 10px;
+  border: 0px;
 }

@@ -12,6 +12,7 @@ import { JwtModule } from '@auth0/angular-jwt';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms'
 import { GuardGuard } from './core/services/guard.guard';
 import { AuthenticationService } from './core/services/authentication.service';
+import { CommonModule } from '@angular/common';
 
 export function TokenGetter() {
   return localStorage.getItem('token');
@@ -27,6 +28,7 @@ export function TokenGetter() {
     ModalModule,
     BrowserAnimationsModule,
     SharedModule,
+    CommonModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: TokenGetter,
