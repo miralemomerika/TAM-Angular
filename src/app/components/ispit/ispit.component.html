@@ -1,0 +1,211 @@
+<main id="main" data-aos="fade-in">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <div class="breadcrumbs">
+        <div class="container">
+            <h2>Ispiti</h2>
+            <p> Ovdje se nalaze Vaši ispiti, a samim tim imate mogućnost i da kreirate nove. </p>
+        </div>
+    </div><!-- End Breadcrumbs -->
+
+    <section id="exams" class="exams">
+        <div class="container" data-aos="fade-up">
+            <!-- <div class="d-flex justify-content-end flex-wrap flex-row container"> -->
+            <div class="d-flex justify-content-end container">
+                <button type="button" id="createIspit" (click)="create()" class="btn" data-toggle="modal"
+                    data-target="#staticBackdrop">Dodaj Novi Ispit</button>
+            </div>
+            <div class="row" data-aos-delay="100">
+
+                <app-ispit-items (onEdit)="uredi($event)" (onDelete)="modalBrisanje($event)"></app-ispit-items>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!--Modal za dodavanje-->
+<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="addIspit" autocomplete="off" novalidate (ngSubmit)="createIspit(addIspit.value)">
+                    <h1>Dodaj Ispit:</h1>
+                    <div *ngIf="showError" class="alert alert-danger" role="alert">
+                        <span [innerHTML]="errorMessage"></span>
+                    </div>
+                    <label for="naziv">Naslov:</label>
+
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Unesite naslov.." id="naslov"
+                            formControlName="naslov" required>
+                    </div>
+                    <p>
+                        <em *ngIf="validateControl('naslov') && hasError('naslov', 'required')">Naslov
+                            je obavezan!</em>
+                    </p>
+                    <label for="opis">Opis</label>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Unesite opis.." id="opis"
+                            formControlName="opis" required>
+                    </div>
+                    <p>
+                        <em *ngIf="validateControl('opis') && hasError('opis', 'required')">Opis
+                            je obavezan!</em>
+                    </p>
+                    <label for="vrijemePocetka">Vrijeme pocetka ispita:</label>
+                    <div class="input-group mb-3">
+                        <input type="datetime-local" class="form-control" ngModel
+                            placeholder="Datum i vrijeme pocetka ispita" id="vrijemePocetka"
+                            formControlName="vrijemePocetka" required>
+                    </div>
+                    <p>
+                        <em *ngIf="validateControl('vrijemePocetka') && hasError('vrijemePocetka', 'required')">
+                            Datum i vrijeme pocetka ispita su obavezni!
+                        </em>
+                    </p>
+                    <label for="vrijemeZavrsetka">Vrijeme kraja ispita:</label>
+                    <div class="input-group mb-3">
+                        <input type="datetime-local" class="form-control" ngModel
+                            placeholder="Datum i vrijeme kraja ispita" id="vrijemeZavrsetka"
+                            formControlName="vrijemeZavrsetka" required>
+                    </div>
+                    <p>
+                        <em *ngIf="validateControl('vrijemeZavrsetka') && hasError('vrijemeZavrsetka', 'required')">
+                            Datum i vrijeme kraja ispita su obavezni!
+                        </em>
+                    </p>
+                    <label for="organizacijaKursaId">Organizacije kurseva:</label>
+                    <div class="input-group mb-3">
+                        <select formControlName="organizacijaKursaId" class="form-control" required>
+                            <option value="" selected disabled hidden>Izaberite organizaciju kursa..</option>
+                            <option *ngFor="let organizacije of organizacijeKurseva; let i = index"
+                                [value]="organizacijeKurseva[i].value">
+                                {{ organizacijeKurseva[i].text }}
+                            </option>
+                        </select>
+                    </div>
+                    <p>
+                        <em
+                            *ngIf="validateControl('organizacijaKursaId') && hasError('organizacijaKursaId', 'required')">
+                            Obavezno je da selektujete organizaciju kursa kojoj dodjeljujete ispit!
+                        </em>
+                    </p>
+                    <app-upload (onUploadFinished)="uploadFinished($event)" [link]="uploadLink"></app-upload>
+                    <button type="submit" class="btn btn-block btn-success" [disabled]="!addIspit.valid">Spremi</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--Modal za uredjivanje/detalje-->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="addIspit" autocomplete="off" novalidate (ngSubmit)="updateIspit(addIspit.value)">
+                    <h1>Detalji Ispita:</h1>
+                    <div *ngIf="showError" class="alert alert-danger" role="alert">
+                        <span [innerHTML]="errorMessage"></span>
+                    </div>
+                    <label for="naziv">Naslov:</label>
+
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Unesite naslov.." id="naslov"
+                            formControlName="naslov" required>
+                    </div>
+                    <p>
+                        <em *ngIf="validateControl('naslov') && hasError('naslov', 'required')">Naslov
+                            je obavezan!</em>
+                    </p>
+                    <label for="opis">Opis</label>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Unesite opis.." id="opis"
+                            formControlName="opis" required>
+                    </div>
+                    <p>
+                        <em *ngIf="validateControl('opis') && hasError('opis', 'required')">Opis
+                            je obavezan!</em>
+                    </p>
+                    <label for="vrijemePocetka">Vrijeme pocetka ispita:</label>
+                    <div class="input-group mb-3">
+                        <input type="datetime-local" class="form-control" ngModel
+                            placeholder="Datum i vrijeme pocetka ispita" id="vrijemePocetka"
+                            formControlName="vrijemePocetka" required>
+                    </div>
+                    <p>
+                        <em *ngIf="validateControl('vrijemePocetka') && hasError('vrijemePocetka', 'required')">
+                            Datum i vrijeme pocetka ispita su obavezni!
+                        </em>
+                    </p>
+                    <label for="vrijemeZavrsetka">Vrijeme kraja ispita:</label>
+                    <div class="input-group mb-3">
+                        <input type="datetime-local" class="form-control" ngModel
+                            placeholder="Datum i vrijeme kraja ispita" id="vrijemeZavrsetka"
+                            formControlName="vrijemeZavrsetka" required>
+                    </div>
+                    <p>
+                        <em *ngIf="validateControl('vrijemeZavrsetka') && hasError('vrijemeZavrsetka', 'required')">
+                            Datum i vrijeme kraja ispita su obavezni!
+                        </em>
+                    </p>
+                    <label for="organizacijaKursaId">Organizacija kursa:</label>
+                    <div class="input-group mb-3">
+                        <select formControlName="organizacijaKursaId" class="form-control" required>
+                            <option value="">Izaberite organizaciju kursa..</option>
+                            <option *ngFor="let organizacije of organizacijeKurseva; let i = index"
+                                [value]="organizacijeKurseva[i].value">
+                                {{ organizacijeKurseva[i].text }}
+                            </option>
+                        </select>
+                    </div>
+                    <p>
+                        <em
+                            *ngIf="validateControl('organizacijaKursaId') && hasError('organizacijaKursaId', 'required')">
+                            Obavezno je da selektujete organizaciju kursa kojoj dodjeljujete ispit!
+                        </em>
+                    </p>
+                    <div class="input-group mb-3">
+                        <a class="btn btn-info" [href]="examPath()" target="_blank">Link na dokument</a>
+                    </div>
+                    <app-upload (onUploadFinished)="uploadFinished($event)"></app-upload>
+                    <button type="submit" class="btn btn-block btn-success" [disabled]="!addIspit.valid">Spremi</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="staticBackdropDel" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Izbriši</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Da li ste sigurni da želite obrisati?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" (click)="izbrisi()">Da</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Ne</button>
+            </div>
+        </div>
+    </div>
+</div>

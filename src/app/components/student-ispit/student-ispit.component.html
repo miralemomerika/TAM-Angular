@@ -1,0 +1,58 @@
+<main id="main" data-aos="fade-in">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <div class="breadcrumbs">
+        <div class="container">
+            <h2>Ispiti</h2>
+            <p> Ovdje se nalaze Vaši trenutno aktivni ispiti i prethodno zavrseni ispiti na svim kursevima.</p>
+        </div>
+    </div><!-- End Breadcrumbs -->
+
+    <section id="exams" class="exams">
+        <div class="container" data-aos="fade-up">
+            <div class="row" data-aos-delay="100">
+
+                <div class="d-flex .align-content-start flex-wrap flex-row">
+
+                    <div _ngcontent-hji-c59="" data-aos="fade-up" class="container aos-init aos-animate">
+                        <div _ngcontent-hji-c59="" class="section-title">
+                            <p _ngcontent-hji-c59="">Aktivni</p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div *ngFor="let aktivni of aktivniIspiti; let i = index" class="col-sm-3 mb-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ aktivniIspiti[i].naslov }}</h5>
+                                    <p class="card-text"> {{ aktivniIspiti[i].opis | slice:0:50 }}..</p>
+                                    <a class="btn btn-info" (click)="DetaljiAktivnih(aktivniIspiti[i])">Detalji</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div _ngcontent-hji-c59="" data-aos="fade-up" class="container aos-init aos-animate">
+                        <div _ngcontent-hji-c59="" class="section-title">
+                            <p _ngcontent-hji-c59="">Neaktivni</p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div *ngFor="let zavrseni of zavrseniIspiti; let i = index" class="col-sm-3 mb-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ zavrseniIspiti[i].naslov }}</h5>
+                                    <p class="card-text">{{ zavrseniIspiti[i].opis | slice:0:50 }}..</p>
+                                    <a class="btn btn-info" (click)="DetaljiZavrsenih(zavrseniIspiti[i])">Detalji</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+</main>

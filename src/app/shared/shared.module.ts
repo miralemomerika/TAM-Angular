@@ -1,6 +1,9 @@
 import { CourseItemComponent } from './../components/course-item/course-item.component';
 import { EventAddComponent } from '../components/events/event-add/event-add.component';
 import { EventItemComponent } from '../components/event-item/event-item.component';
+import { IspitAddComponent } from '../components/ispit-add/ispit-add.component';
+import { IspitItemsComponent } from '../components/ispit-items/ispit-items.component';
+import { UploadComponent } from '../components/upload/upload.component';
 
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -21,7 +24,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FooterComponent,
     CourseItemComponent,
     EventItemComponent,
-    EventAddComponent
+    EventAddComponent,
+    IspitAddComponent,
+    IspitItemsComponent,
+    UploadComponent
   ],
   imports: [
     CommonModule,
@@ -39,7 +45,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FooterComponent,
     CourseItemComponent,
     EventItemComponent,
-    EventAddComponent
+    EventAddComponent,
+    IspitAddComponent,
+    IspitItemsComponent,
+    UploadComponent
   ]
 })
 export class SharedModule { }

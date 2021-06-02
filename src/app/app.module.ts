@@ -10,6 +10,8 @@ import { AppComponent } from './app.component';
 import { ErrorHandlerService } from './core/services/error-handler.service';
 import { JwtModule } from '@auth0/angular-jwt';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms'
+import { GuardGuard } from './core/services/guard.guard';
+import { AuthenticationService } from './core/services/authentication.service';
 
 export function TokenGetter() {
   return localStorage.getItem('token');
@@ -41,7 +43,8 @@ export function TokenGetter() {
       useClass: ErrorHandlerService,
       multi: true,
     },
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    GuardGuard
   ],
   bootstrap: [AppComponent],
 })

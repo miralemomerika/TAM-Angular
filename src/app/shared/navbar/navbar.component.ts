@@ -1,7 +1,6 @@
 import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { CollapseDirective } from 'ngx-bootstrap/collapse';
 import { ModalDirective } from 'ngx-bootstrap/modal';
-import { reduce } from 'rxjs/operators';
 import { AuthenticationService } from '../../core/services/authentication.service';
 
 @Component({
@@ -44,12 +43,17 @@ export class NavbarComponent implements OnInit {
     this.authService.authChanged
     .subscribe((res: any) => {
       this.isUserAuthenticated = res;
-    })
+    });
+    
+    if(this.authService.isUserAuthenticated() === true)
+      this.isUserAuthenticated = true;
+    else
+      this.isUserAuthenticated = false;
   }
 
   public Logout = () => {
     this.authService.logout();
-    this.router.navigate(["/"]);
+    // this.router.navigate(["/"]);
   }
 
   ngAfterViewChecked(): void{

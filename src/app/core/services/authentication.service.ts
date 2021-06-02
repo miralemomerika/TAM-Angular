@@ -6,6 +6,7 @@ import { UserLogin } from 'src/app/_interfaces/user-login';
 import { Observable, Subject } from 'rxjs';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { CustomEncoder } from 'src/app/shared/custom-encoder';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class AuthenticationService {
   private authChangedSub = new Subject<boolean>();
   public authChanged = this.authChangedSub.asObservable();
 
-  constructor(private _http: HttpClient, private _envUrl: EnvironmentUrlServiceService, private jwtHelper: JwtHelperService) { }
+  constructor(private _http: HttpClient, private _envUrl: EnvironmentUrlServiceService, private jwtHelper: JwtHelperService, private _router: Router) { }
 
   private createCompleteRoute = (route: string, envAddress: string) => {
     return `${envAddress}${route}`;
@@ -36,12 +37,13 @@ export class AuthenticationService {
   public logout = () => {
     localStorage.removeItem("token");
     this.sendAuthStateChangeNotification(false);
+    this._router.navigate(['/home']);
   }
 
   public isUserAuthenticated = (): boolean => {
-    const token = localStorage.getItem('token');
+    const token: any = localStorage.getItem('token') != null ? localStorage.getItem('token') : undefined;
 
-    if( typeof token === 'undefined' && this.jwtHelper.isTokenExpired(token))
+    if( typeof token === 'undefined' || this.jwtHelper.isTokenExpired(token))
       return false;
     else
       return true;
