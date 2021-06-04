@@ -17,6 +17,8 @@ export class NavbarComponent implements OnInit {
 
   public isUserAuthenticated: boolean = false;
   public isUserOrganizer: boolean = false;
+  public isUserStudent: boolean = false;
+  public isUserTeacher: boolean = false;
   private _isCollapsed: boolean = true;
   collapseRef: any;
   router: any;
@@ -79,6 +81,24 @@ export class NavbarComponent implements OnInit {
       this.isUserOrganizer = true;
     else
       this.isUserOrganizer = false;
+
+    this.authService.studentChanged
+    .subscribe((res: any) => {
+      this.isUserStudent = res;
+    });
+    if(this.authService.isUserStudent() === true)
+      this.isUserStudent = true;
+    else
+      this.isUserStudent = false;
+
+      this.authService.teacherChanged
+      .subscribe((res: any) => {
+        this.isUserTeacher = res;
+      });
+      if(this.authService.isUserTeacher() === true)
+        this.isUserTeacher = true;
+      else
+        this.isUserTeacher = false;
     // this.isUserOrganizer=Boolean(this.authService.isUserOrganizer);
     // this.isUserAuthenticated=Boolean(this.authService.isUserAuthenticated);
     this.sharedData.trenutniBroj.subscribe(broj => this.brojAktivnihRecenzija = broj);

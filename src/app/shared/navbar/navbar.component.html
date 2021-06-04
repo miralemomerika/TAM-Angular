@@ -11,7 +11,12 @@
         <li routerLinkActive="active"><a routerLink="/courses" routerLinkActive="active">Kursevi</a></li>
         <!-- <li routerLinkActive="active"><a routerLink="/course-details" routerLinkActive="active">Course details</a></li> -->
         <!-- <li routerLinkActive="active"><a routerLink="/trainers" routerLinkActive="active">Predavači</a></li> -->
-        <li *ngIf="isUserOrganizer" routerLinkActive="active"><a routerLink="/events" routerLinkActive="active">Upravljanje događajima</a></li>
+        <li *ngIf="isUserOrganizer" routerLinkActive="active"><a routerLink="/events"
+            routerLinkActive="active">Upravljanje događajima</a></li>
+        <li *ngIf="isUserStudent" routerLinkActive="active"><a routerLink="/student-exams"
+            routerLinkActive="active">Ispiti</a></li>
+        <li *ngIf="isUserTeacher" routerLinkActive="active"><a routerLink="/exams" routerLinkActive="active">Ispiti</a>
+        </li>
         <li routerLinkActive="active"><a routerLink="/event-details" routerLinkActive="active">Događaji</a></li>
         <li routerLinkActive="active"><a routerLink="/contact">Kontakt</a></li>
         <!-- <li routerLinkActive="active">
@@ -20,7 +25,8 @@
             <span class="badge badge-light ml-2">{{ brojAktivnihRecenzija }}</span>
           </a>
         </li> -->
-        <li *ngIf="!isUserAuthenticated" routerLinkActive="active"><a routerLink="/authentication/login">Prijava</a></li>
+        <li *ngIf="!isUserAuthenticated" routerLinkActive="active"><a routerLink="/authentication/login">Prijava</a>
+        </li>
         <li *ngIf="!isUserAuthenticated" routerLinkActive="active"><a
             routerLink="/authentication/register">Registracija</a></li>
         <li style="cursor: pointer;" *ngIf="isUserAuthenticated" routerLinkActive="active"><a class="btn-get-started"
@@ -37,6 +43,8 @@
       <!-- <a routerLink="/course-details" (click)="show = !show">Course Details</a> -->
       <!-- <a routerLink="/trainers" (click)="show = !show">Trainers</a> -->
       <!-- <a routerLink="/events" (click)="show = !show">Događaji</a> -->
+      <a *ngIf="isUserStudent" routerLink="/student-exams" (click)="show = !show">Ispiti</a>
+      <a *ngIf="isUserTeacher" routerLink="/exams" (click)="show = !show">Ispiti</a>
       <a routerLink="/review">
         Recenzije
         <span class="badge badge-light ml-2">{{ brojAktivnihRecenzija }}</span>
@@ -45,9 +53,9 @@
       <a routerLink="/event-details" (click)="show = !show">Događaji</a>
       <a *ngIf="!isUserAuthenticated" routerLink="/authentication/login" (click)="show = !show">Prijava</a>
       <a *ngIf="!isUserAuthenticated" routerLink="/authentication/register" (click)="show = !show">Registracija</a>
-      <a *ngIf="isUserAuthenticated" class="btn-get-started"(click)="Logout()" (click)="show = !show">Odjava</a>
+      <a *ngIf="isUserAuthenticated" class="btn-get-started" (click)="Logout()" (click)="show = !show">Odjava</a>
     </div>
   </div>
-  <button type="button" class="mobile-nav-toggle d-lg-none"
-  (click)="ShowMobileMenu()"><i class="icofont-navigation-menu"></i></button>
+  <button type="button" class="mobile-nav-toggle d-lg-none" (click)="ShowMobileMenu()"><i
+      class="icofont-navigation-menu"></i></button>
 </header><!-- End Header -->

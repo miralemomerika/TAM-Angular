@@ -13,5 +13,9 @@ export class AppComponent {
       this._authService.sendAuthStateChangeNotification(true);
     if(this._authService.isUserOrganizer())
       this._authService.sendOrganizerChangeNotification(true);
+    if(this._authService.isUserStudent())
+      this._authService.sendStudentChangeNotification(true);
+    if(this._authService.isUserTeacher())
+      this._authService.sendTeacherChangeNotification(true);
   }
 }

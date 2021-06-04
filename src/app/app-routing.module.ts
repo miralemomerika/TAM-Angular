@@ -17,6 +17,8 @@ import { GuardGuard } from './core/services/guard.guard';
 import { StudentIspitComponent } from './components/student-ispit/student-ispit.component';
 import { StudentIspitDetaljiComponent } from './components/student-ispit-detalji/student-ispit-detalji.component';
 import { OrganizerGuard } from './shared/guards/organizer.guard';
+import { TeacherGuard } from './shared/guards/teacher.guard';
+import { StudentGuard } from './shared/guards/student.guard';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -30,11 +32,10 @@ const routes: Routes = [
   { path: 'contact', component: ContactComponent },
   { path: 'login', component: LoginComponent },
   { path: 'event-details', component: EventDetailsComponent},
-  { path: 'exams', component: IspitComponent },
-  { path: 'student-exams', component: StudentIspitComponent },
-  { path: 'ispit-detalji', component: StudentIspitDetaljiComponent },
+  { path: 'exams', component: IspitComponent, canActivate:[TeacherGuard] },
+  { path: 'student-exams', component: StudentIspitComponent, canActivate:[StudentGuard] },
+  { path: 'ispit-detalji', component: StudentIspitDetaljiComponent, canActivate:[StudentGuard] },
   { path: 'review', component: ReviewComponent},
-  // { path: 'authentication/register', component: RegisterUserComponent },
   {
     path: '404',
     component: Error404Component,

@@ -21,11 +21,11 @@ import { ReviewComponent } from './review/review.component';
     EventAddComponent,
     EventItemComponent,
     EventDetailsComponent,
-    IspitComponent,
+    // IspitComponent,
     IspitItemsComponent,
     UploadComponent,
     StudentIspitComponent,
-    StudentIspitDetaljiComponent,
+    // StudentIspitDetaljiComponent,
     ReviewComponent
   ],
   imports: [

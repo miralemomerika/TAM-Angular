@@ -18,7 +18,11 @@ export class AuthenticationService {
   public authChanged = this.authChangedSub.asObservable();
 
   private organizerChangedSub = new Subject<boolean>();
+  private studentChangedSub = new Subject<boolean>();
+  private teacherChangedSub = new Subject<boolean>();
   public organizerChanged = this.organizerChangedSub.asObservable();
+  public studentChanged = this.studentChangedSub.asObservable();
+  public teacherChanged = this.teacherChangedSub.asObservable();
 
   constructor(private _http: HttpClient, private _envUrl: EnvironmentUrlServiceService, private jwtHelper: JwtHelperService, private sharedData: SharedDataService, private router: Router) { }
 
@@ -43,10 +47,20 @@ export class AuthenticationService {
     this.organizerChangedSub.next(isUserOrganizer);
   }
 
+  public sendStudentChangeNotification = (isUserStudent : boolean) => {
+    this.studentChangedSub.next(isUserStudent);
+  }
+
+  public sendTeacherChangeNotification = (isUserTeacher : boolean) => {
+    this.teacherChangedSub.next(isUserTeacher);
+  }
+
   public logout = () => {
     localStorage.removeItem("token");
     this.sendAuthStateChangeNotification(false);
     this.sendOrganizerChangeNotification(false);
+    this.sendStudentChangeNotification(false);
+    this.sendTeacherChangeNotification(false);
     this.sharedData.promijeniBroj(null);
     this.router.navigate(['/home']);
   }
@@ -71,6 +85,27 @@ export class AuthenticationService {
     return false;
   }
 
+  public isUserStudent = (): boolean => {
+    const token = localStorage.getItem("token");
+    if(token != null)
+    {
+      const decodedToken = this.jwtHelper.decodeToken(token);
+      const role = decodedToken['http://schemas.microsoft.com/ws/2008/06/identity/claims/role']
+      return role == 'Polaznik';
+    }
+    return false;
+  }
+
+  public isUserTeacher = (): boolean => {
+    const token = localStorage.getItem("token");
+    if(token != null)
+    {
+      const decodedToken = this.jwtHelper.decodeToken(token);
+      const role = decodedToken['http://schemas.microsoft.com/ws/2008/06/identity/claims/role']
+      return role == 'Predavac';
+    }
+    return false;
+  }
 
   public confirmEmail = (route: string, token: string, email: string) => {
 
