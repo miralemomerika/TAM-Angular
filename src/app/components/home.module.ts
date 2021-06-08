@@ -14,19 +14,17 @@ import { UploadComponent } from './upload/upload.component';
 import { StudentIspitComponent } from './student-ispit/student-ispit.component';
 import { StudentIspitDetaljiComponent } from './student-ispit-detalji/student-ispit-detalji.component';
 import { ReviewComponent } from './review/review.component';
+import { IspitDetaljiComponent } from './ispit-detalji/ispit-detalji.component';
 
 @NgModule({
   declarations: [
     CourseItemComponent,
-    EventAddComponent,
     EventItemComponent,
     EventDetailsComponent,
-    // IspitComponent,
     IspitItemsComponent,
     UploadComponent,
     StudentIspitComponent,
-    // StudentIspitDetaljiComponent,
-    ReviewComponent
+    ReviewComponent,
   ],
   imports: [
     CommonModule, 

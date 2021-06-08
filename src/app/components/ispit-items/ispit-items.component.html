@@ -31,8 +31,7 @@
                 <div class="card-body">
                     <h5 class="card-title">{{ neaktivniIspiti[i].naslov }}</h5>
                     <p class="card-text">{{ neaktivniIspiti[i].opis | slice:0:50 }}..</p>
-                    <a (click)="uredi(neaktivni)" data-toggle="modal" data-target="#exampleModal"
-                        class="btn btninfo">Detalji</a>
+                    <a (click)="PrikaziDetalje(neaktivniIspiti[i])" class="btn btninfo">Detalji</a>
                     <button class="btn btn-danger ml-2" data-toggle="modal" data-target="#staticBackdropDel"
                         (click)="izbrisi(neaktivni)">Izbrisi</button>
                 </div>

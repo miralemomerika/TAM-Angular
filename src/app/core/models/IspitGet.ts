@@ -3,8 +3,8 @@ export class IspitGet {
     naslov?: string;
     opis?: string;
     urlDokumenta?: string;
-    vrijemePocetka?: Date;
-    vrijemeZavrsetka?: Date;
+    vrijemePocetka?: string;
+    vrijemeZavrsetka?: string;
     organizacijaKursa?: string;
     organizacijaKursaId?: number;
 }

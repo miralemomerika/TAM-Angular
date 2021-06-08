@@ -13,6 +13,7 @@ import { Error404Component } from './components/error404/error404.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EventDetailsComponent } from './components/event-details/event-details.component';
 import { IspitComponent } from './components/ispit/ispit.component';
+import { IspitDetaljiComponent } from './components/ispit-detalji/ispit-detalji.component';
 import { GuardGuard } from './core/services/guard.guard';
 import { StudentIspitComponent } from './components/student-ispit/student-ispit.component';
 import { StudentIspitDetaljiComponent } from './components/student-ispit-detalji/student-ispit-detalji.component';
@@ -33,6 +34,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'event-details', component: EventDetailsComponent},
   { path: 'exams', component: IspitComponent, canActivate:[TeacherGuard] },
+  { path: 'exam-details', component: IspitDetaljiComponent, canActivate:[TeacherGuard] },
   { path: 'student-exams', component: StudentIspitComponent, canActivate:[StudentGuard] },
   { path: 'ispit-detalji', component: StudentIspitDetaljiComponent, canActivate:[StudentGuard] },
   { path: 'review', component: ReviewComponent},
@@ -45,10 +47,11 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)
-  ,
-  FormsModule,
-ReactiveFormsModule],
+  imports: [
+    RouterModule.forRoot(routes),
+    FormsModule,
+    ReactiveFormsModule
+  ],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

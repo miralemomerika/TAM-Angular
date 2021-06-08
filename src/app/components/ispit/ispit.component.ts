@@ -5,6 +5,7 @@ import { IspitDodaj } from 'src/app/core/models/IspitDodaj';
 import { IspitGet } from '../../core/models/IspitGet';
 import { IspitService } from '../../core/services/ispit.service';
 import { SharedModule } from '../../shared/shared.module';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-ispit',
@@ -28,8 +29,7 @@ export class IspitComponent implements OnInit {
       opis: new FormControl('', [Validators.required]),
       vrijemePocetka: new FormControl('', [Validators.required]),
       vrijemeZavrsetka: new FormControl('', [Validators.required]),
-      organizacijaKursaId: new FormControl('', [Validators.required]),
-      // urlDokumenta: new FormControl('', [Validators.required])
+      organizacijaKursaId: new FormControl('', [Validators.required])
     });
 
     this.ispitService.GetOrganizacijeKurseva().subscribe(data => {
@@ -42,7 +42,7 @@ export class IspitComponent implements OnInit {
   }
   
   public examPath(){
-    return this.urlDokumenta === null ? window.location.reload() : 'https://localhost:5001/' + this.urlDokumenta;
+    return this.urlDokumenta === null ? window.location.reload() : environment.urlAddress + this.urlDokumenta;
   }
 
   public uploadFinished = (event: any) => {

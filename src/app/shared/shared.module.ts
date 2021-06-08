@@ -13,6 +13,7 @@ import { RouterModule } from '@angular/router';
 
 import { PrivacyComponent } from '../components/privacy/privacy.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { IspitDetaljiComponent } from '../components/ispit-detalji/ispit-detalji.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     EventItemComponent,
     EventAddComponent,
     IspitItemsComponent,
-    UploadComponent
+    UploadComponent,
+    IspitDetaljiComponent
   ],
   imports: [
     CommonModule,

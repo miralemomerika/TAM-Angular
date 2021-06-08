@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { IspitRad } from 'src/app/core/models/IspitRad';
 import { RadDodaj } from 'src/app/core/models/RadDodaj';
 import { RadService } from 'src/app/core/services/rad.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-student-ispit-detalji',
@@ -56,7 +57,7 @@ export class StudentIspitDetaljiComponent implements OnInit, OnDestroy {
   }
   
   public examPath(link?: string){
-    return this.ispit.urlIspita === null ? '#' : 'https://localhost:5001/' + link;
+    return this.ispit.urlIspita === null ? '#' : environment.urlAddress + link;
   }
 
   public uploadFinished = (event: any) => {

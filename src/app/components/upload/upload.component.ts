@@ -1,5 +1,7 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { HttpEventType, HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
+
 
 @Component({
   selector: 'app-upload',
@@ -13,9 +15,7 @@ export class UploadComponent implements OnInit {
   @Input() link = '';
   @Output() public onUploadFinished = new EventEmitter();
 
-  constructor( private http: HttpClient ) {
-    console.log('link uploada: ' + this.link);
-   }
+  constructor( private http: HttpClient ) { }
 
   ngOnInit(): void {
   }
@@ -29,7 +29,7 @@ export class UploadComponent implements OnInit {
     const formData = new FormData();
     formData.append('file', fileToUpload, fileToUpload.name);
 
-    this.http.post('https://localhost:5001/' + this.link, formData, {reportProgress: true, observe: 'events'})
+    this.http.post(environment.urlAddress + this.link, formData, {reportProgress: true, observe: 'events'})
     .subscribe(event => {
       if(event.type === HttpEventType.UploadProgress)
         this.progress = Math.round(100 * event.loaded / event.total!);

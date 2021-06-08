@@ -44,4 +44,8 @@ export class IspitItemsComponent implements OnInit {
     this.onDelete.emit(ispit);
   }
 
+  PrikaziDetalje(ispit: IspitGet){
+    this.router.navigate(['/exam-details'], {state: {data: {ispit: ispit}}});
+  }
+
 }
